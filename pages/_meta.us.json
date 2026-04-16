@@ -1,3 +1,12 @@
 {
-  "index": "Home"
+  "API Docs": {
+    "type": "menu",
+    "items": {
+      "agent-sdk": {
+        "title": "Agent SDK",
+        "href": "/agent-sdk"
+      }
+    }
+  },
+  "index": "Welcome"
 }
