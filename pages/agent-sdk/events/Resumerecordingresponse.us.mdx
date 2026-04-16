@@ -1,0 +1,17 @@
+# Resumerecordingresponse
+
+This event is a return from the resumeRecording method with the result of the request.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ResumeRecordingResponse", callback);
+```
+
+## Payload
+
+```json copy
+{ "result": "true", "code": "0", "description": "" }
+```

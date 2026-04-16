@@ -1,0 +1,27 @@
+# Authentication
+
+To authenticate a user on Olos using the Agent SDK, follow the steps below:
+
+## 1 - Authentication Method Call:
+
+Authentication of the agent on the specific OLOS platform for text campaigns.
+
+```js copy
+import { OlosAgentChannelWs, OlosAgent } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentAuthenticationChat("login", "senha");
+
+const agent = new OlosAgent();
+```
+
+## 2 - Wait for the return via the authentication method event:
+
+```js copy
+import { olosOn, olosOff } from '@olostecnologia/olosagentsdk';
+ 
+olosOn("agentAuthenticationChat", () => {
+  olosAgent.agentID = agentId;
+});
+olosOn("agentAuthenticationChatFail", callback);
+```

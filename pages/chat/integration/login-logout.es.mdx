@@ -1,0 +1,35 @@
+# GetNextEventChat - Acerca de Login/Logout
+
+Hay dos eventos que inicialmente se disparan que es el "LoginResponse" y el "LogoutResponse". 
+
+El LoginResponse Se dispara cuando el agente está asociado con una campaña de chat.Si el agente no está relacionado con una campaña de chat, este evento no está despedido, disparando el evento LogoutResponse como errorCode 12 o errorMessage = "Agente não encontrado."
+
+## LoginResponse
+```json
+{
+  "eventTypeId": 2,
+  "timestamp": "2024-04-25T16:15:17.5184276-03:00",
+  "campaignId": 0,
+  "eventData": {
+      "agentName": "Ricardo Shigeoka",
+      "errorCode": 0,
+      "errorMessage": null
+  },
+  "channel": null
+}
+```
+
+## LogoutResponse
+```json
+{
+    "eventTypeId": 4,
+    "timestamp": "2024-04-25T16:05:48.682911-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "agentId": 1099,
+        "errorCode": 12,
+        "errorMessage": "Agente não encontrado."
+    },
+    "channel": null
+}
+```

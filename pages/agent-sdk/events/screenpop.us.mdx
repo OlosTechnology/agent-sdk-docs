@@ -1,0 +1,32 @@
+# Screenpop
+
+Event with the data of an incoming call. This event also contains all the information about the call (call data).
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("Screenpop", callback);
+```
+
+## Payload
+
+```json copy
+{
+  "callId": 91079,
+  "campaignId": 108,
+  "phoneNumber": "5511989101150",
+  "campaignData": "<Nome>Rafael</Nome>",
+  "customerId": "10",
+  "agentIdOrigin": 0,
+  "campaignIdOrigin": 0,
+  "readOnly": false,
+  "campaignCode": "",
+  "tableName": "Test_OWA_5",
+  "priorityCampaign": true,
+  "phoneNumberList": ["5511989101150"],
+  "previewCall": false,
+  "automaticPreviewCall": false
+}
+```

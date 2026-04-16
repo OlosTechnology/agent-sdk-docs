@@ -1,0 +1,23 @@
+# Newmsgfromsupervisor
+
+This event returns the message sent by the supervisor to the operator.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("NewMsgFromSupervisor", callback);
+```
+
+## Payload
+
+```json copy
+{
+  "messageId": 90046,
+  "broadcastId": 0,
+  "agentId": 48,
+  "supervisorId": 49,
+  "message": "Message to the Operator"
+}
+```

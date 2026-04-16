@@ -1,0 +1,12 @@
+# 3. Building the iframe's final URL
+
+With the returned URL, build the final URL by adding the required parameters via query string:
+
+- passcode → the 4-digit code received previously
+- agent_id → the ID of the logged-in agent
+
+Example of final URL
+
+```
+https://[domain]/softphonewebrtc/?remote_address=atd-ecs01.olos.com.br&passcode=1184&agent_id=1208
+```

@@ -1,0 +1,47 @@
+# OlosVoiceSupportWS
+
+The OlosVoiceSupportWS allows control of an audio prompt in an active voice call.
+
+## start
+
+Request the start of audio prompt playback.
+
+```ts copy
+import { OlosVoiceSupportWS } from "olosagentsdk";
+
+const voiceSupportWS = new OlosVoiceSupportWS();
+voiceSupportWS.start(agentLogin: any, audio: any, callback?: (response: any) => void);
+```
+
+## pause
+
+Request the pause of the audio prompt.
+
+```ts copy
+import { OlosVoiceSupportWS } from "olosagentsdk";
+
+const voiceSupportWS = new OlosVoiceSupportWS();
+voiceSupportWS.pause(agentLogin: any, callback?: (response: any) => void);
+```
+
+## resume
+
+Request the resumption of audio prompt playback.
+
+```ts copy
+import { OlosVoiceSupportWS } from "olosagentsdk";
+
+const voiceSupportWS = new OlosVoiceSupportWS();
+voiceSupportWS.resume(agentLogin: any, callback?: (response: any) => void);
+```
+
+## stop
+
+Request the termination of audio prompt playback.
+
+```ts copy
+import { OlosVoiceSupportWS } from "olosagentsdk";
+
+const voiceSupportWS = new OlosVoiceSupportWS();
+voiceSupportWS.stop(agentLogin: any, callback?: (response: any) => void);
+```

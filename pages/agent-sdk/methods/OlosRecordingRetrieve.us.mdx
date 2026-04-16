@@ -1,0 +1,37 @@
+# OlosRecordingRetrieve
+
+The OlosRecordingRetrieve allows the retrieval of recording information from text campaigns.
+
+## getConversation
+
+Requests the messages from a conversation derived from a text campaign.
+
+```ts copy
+import { OlosRecordingRetrieve } from "olosagentsdk";
+
+const recordingRetrieve = new OlosRecordingRetrieve();
+recordingRetrieve.getConversation(
+    conversatioId: string,
+    conversationDate: string,
+    max: number | null,
+    callbackSuccess: (response: Array<Conversation>) => void,
+    callbackError: (err: any) => void
+);
+```
+
+## getAgentConversation
+
+Requests the messages from a conversation derived from a text campaign for a specific Agent.
+
+```ts copy
+import { OlosRecordingRetrieve } from "olosagentsdk";
+
+const recordingRetrieve = new OlosRecordingRetrieve();
+recordingRetrieve.getAgentConversation(
+    agentId: string,
+    conversationDate: string,
+    max: number | null,
+    callbackSuccess: (response: Array<Conversation>) => void,
+    callbackError: (err: any) => void
+);
+```

@@ -1,0 +1,15 @@
+# Activecall
+
+Evento recibido cuando se responde a una llamada..
+
+## Como escuchar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ActiveCall", callback);
+```
+
+## Payload
+
+GenericInt (int): CallId (int) -> identificador de la llamada.

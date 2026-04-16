@@ -1,0 +1,17 @@
+# Loginccmfail
+
+Evento enviado quando ocorrer um erro no login do operador no módulo CCM (Campaign Control Module)
+
+## Como escutar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("LoginCCMfail", callback);
+```
+
+## Payload
+
+```json copy
+{ "agentId": 108, "agentName": "User 2" }
+```

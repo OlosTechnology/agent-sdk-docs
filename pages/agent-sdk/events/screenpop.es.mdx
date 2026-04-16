@@ -1,0 +1,32 @@
+# Screenpop
+
+Evento con los datos de una llamada entrante. También es en este evento que se contiene todas las informaciones de la llamada (ticket/billete).
+
+## Como escuchar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("Screenpop", callback);
+```
+
+## Payload
+
+```json copy
+{
+  "callId": 91079,
+  "campaignId": 108,
+  "phoneNumber": "11989101150",
+  "campaignData": "<Nome>Rafael</Nome>",
+  "customerId": "10",
+  "agentIdOrigin": 0,
+  "campaignIdOrigin": 0,
+  "readOnly": false,
+  "campaignCode": "",
+  "tableName": "Teste_OWA_5",
+  "priorityCampaign": true,
+  "phoneNumberList": ["11989101150"],
+  "previewCall": false,
+  "automaticPreviewCall": false
+}
+```

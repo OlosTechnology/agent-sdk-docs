@@ -1,0 +1,15 @@
+# Passcode
+
+Event sent after the execution of the AgentAuthentication method. With the PassCode parameter, the agent should enter the parameter value on the phone to complete the login.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("Passcode", callback);
+```
+
+## Payload
+
+GenericInt: temporary code sent by the ALM (Agent Login Module) for the agent to enter on the phone to complete the login.

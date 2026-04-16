@@ -1,0 +1,15 @@
+# Consultingrequestfail
+
+Evento recibido cuando el intento de consulta presenta alguna falla de marcación.
+
+## Como escuchar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ConsultingRequestFail", callback);
+```
+
+## Payload
+
+GenericString (String): Description -> Descripción de la falla.

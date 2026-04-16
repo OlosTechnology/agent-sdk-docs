@@ -1,0 +1,16 @@
+# Passcode
+
+Evento enviado después de ejecutar el método AgentAuthentication. Con el parámetro PassCode, el agente debe ingresar el valor del parámetro en el teléfono para completar el inicio de sesión.
+
+## Como escuchar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("Passcode", callback);
+```
+
+## Payload
+
+GenericInt: Código temporal enviado por el ALM (Agent Login Module) para que el agente lo escriba en el teléfono para completar el inicio de sesión.
+

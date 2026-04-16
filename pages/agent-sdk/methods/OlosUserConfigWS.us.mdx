@@ -1,0 +1,31 @@
+# OlosUserConfigWS
+
+The OlosUserConfigWS allows requesting information about configurations from the Olos platform.
+
+## getCampaignByUserLogin
+
+Requests the list of active campaigns by login. If the user is a supervisor or agent, it will return their campaigns. If the user is a manager, it will return the campaigns belonging to their companies.
+
+```ts copy
+import { OlosUserConfigWS } from "olosagentsdk";
+
+const userConfigWS = new OlosUserConfigWS();
+userConfigWS.getCampaignByUserLogin(
+    login: string,
+    loginOwner: string,
+    passwordOwner: string,
+    callback: (response: any) => void,
+    callbackError?: (response: any) => void
+);
+```
+
+## getChatSupervisorAgent
+
+Requests the list of supervisors with whom the Agent can initiate a chat.
+
+```ts copy
+import { OlosUserConfigWS } from "olosagentsdk";
+
+const userConfigWS = new OlosUserConfigWS();
+userConfigWS.getChatSupervisorAgent(agentId: any, callback?: (response: any) => void);
+```

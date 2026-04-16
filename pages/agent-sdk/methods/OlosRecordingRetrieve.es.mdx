@@ -1,0 +1,37 @@
+# OlosRecordingRetrieve
+
+OlosRecordingRetrieve permite la búsqueda de información de grabaciones de campañas de texto.
+
+## getConversation
+
+Solicita los mensajes de una conversación derivada de una campaña de texto.
+
+```ts copy
+import { OlosRecordingRetrieve } from "olosagentsdk";
+
+const recordingRetrieve = new OlosRecordingRetrieve();
+recordingRetrieve.getConversation(
+    conversatioId: string,
+    conversationDate: string,
+    max: number | null,
+    callbackSuccess: (response: Array<Conversation>) => void,
+    callbackError: (err: any) => void
+);
+```
+
+## getAgentConversation
+
+Solicita mensajes de una conversación derivada de una campaña de texto para un agente específico.
+
+```ts copy
+import { OlosRecordingRetrieve } from "olosagentsdk";
+
+const recordingRetrieve = new OlosRecordingRetrieve();
+recordingRetrieve.getAgentConversation(
+    agentId: string,
+    conversationDate: string,
+    max: number | null,
+    callbackSuccess: (response: Array<Conversation>) => void,
+    callbackError: (err: any) => void
+);
+```

@@ -1,0 +1,29 @@
+# Logoutreason
+
+Return event with the description of the logout reason.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("LogoutReason", callback);
+```
+
+## Payload
+
+```json copy
+{ "agentId": 51, "reason": "RequestedByAgent" }
+```
+
+### List of Possible Reasons
+
+1. RequestedByAgent
+2. RequestedByCCM
+3. Disconnected
+4. HeartBeat
+5. RequestedBySupervisor
+
+### Note
+
+This event will occur every time the user is logged out of the platform.

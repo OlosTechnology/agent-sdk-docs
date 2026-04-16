@@ -1,0 +1,48 @@
+# ListDispositions
+
+This event is a return from the _listDispositions_ method to list all available dispositions for the agents.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ListDispositions", callback);
+```
+
+## Payload
+
+```json copy
+[
+  {
+    "dispositionId": 105,
+    "description": "Test Valdeci",
+    "dispositionType": "Success"
+  },
+  {
+    "dispositionId": 100,
+    "description": "Sale",
+    "dispositionType": "Success"
+  },
+  {
+    "dispositionId": 101,
+    "description": "Refuse",
+    "dispositionType": "Success"
+  },
+  {
+    "dispositionId": 103,
+    "description": "Follow Up",
+    "dispositionType": "Callback"
+  },
+  {
+    "dispositionId": 104,
+    "description": "Without Contact",
+    "dispositionType": "Failure"
+  },
+  {
+    "dispositionId": 102,
+    "description": "Callback",
+    "dispositionType": "CallbackTargetConta"
+  }
+]
+```

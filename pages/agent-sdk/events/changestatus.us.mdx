@@ -1,0 +1,17 @@
+# Changestatus
+
+Event of success in changing the agent's state.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("changestatus", callback);
+```
+
+## Payload
+
+```json copy
+{ "agentId": 108, "agentStatusId": "Idle", "reasonId": 0 }
+```

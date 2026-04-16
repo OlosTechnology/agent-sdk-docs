@@ -1,0 +1,17 @@
+# Changepreviewcallstate
+
+Evento recibido que indica el estado actual de la llamada en el modo Preview Dialing.
+
+## Como escuchar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("PreviewCallState", callback);
+```
+
+## Payload
+
+```json copy
+{ "callId": 91015, "callState": "Started", "phoneNumber": "99999999" }
+```

@@ -1,0 +1,15 @@
+# Consultingrequestfail
+
+Evento recebido quando a tentativa de consulta apresentar alguma falha de discagem.
+
+## Como escutar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ConsultingRequestFail", callback);
+```
+
+## Payload
+
+GenericString (String): Description -> Descrição da falha.

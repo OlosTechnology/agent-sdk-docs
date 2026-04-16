@@ -1,0 +1,75 @@
+# 6.	Presentación de comandos a SoftphoneWeb (postMessage)
+
+Una vez recibida la señal de conexión ("connect"), el agente está listo para realizar llamadas. A partir de ese momento, tu aplicación podrá comunicarse con el iframe de SoftphoneWeb enviando comandos mediante postMessage.
+
+### **Ejemplo de envío de mensaje**
+
+```js
+const iframeElement = document.getElementsByTagName("iframe")[0];
+iframeElement.contentWindow.postMessage(mensagem, iframeElement.src.split("?")[0]);
+```
+
+> ⚠️ Asegúrate de capturar correctamente el elemento 'iframe' y usar el dominio base como targetOrigin por seguridad.
+
+### **Comandos disponibles**
+
+A continuación, los comandos que pueden enviarse al iframe y su descripción:
+
+1. **setSpeakVolume**: Define el volumen del altavoz  
+
+Ejemplo:
+```js
+`setSpeakVolume|0.8` // (define el volumen del altavoz al 80%)
+```
+
+2. **setMicVolume**: Define el volumen del micrófono  
+
+Ejemplo:
+```js
+`setMicVolume|0.6` // (define el volumen del micrófono al 60%)
+```
+
+3. **toggleMute**: Alterna entre silenciar y activar el altavoz  
+
+Ejemplo:
+```js
+`toggleMute`
+```
+
+4. **muteMic**: Silencia el micrófono del agente  
+
+Ejemplo:
+```js
+`muteMic`
+```
+
+5. **unmuteMic**: Activa el micrófono del agente  
+
+Ejemplo:
+```js
+`unmuteMic`
+```
+
+6. **sendDtmf**: Envía tonos DTMF (teclas del teclado numérico durante la llamada)  
+
+Ejemplo:
+```js
+`sendDtmf|5`
+```
+
+A continuación, una tabla con la correspondencia de cada comando DTMF:
+
+| Valor | Carácter |
+|-------|----------|
+| 1     |          |
+| 2     | ABC      |
+| 3     | DEF      |
+| 4     | GHI      |
+| 5     | JKL      |
+| 6     | MNO      |
+| 7     | PQRS     |
+| 8     | TUV      |
+| 9     | WXYZ     |
+| *     |          |
+| 0     | +        |
+| #     |          |

@@ -1,0 +1,31 @@
+# Logger
+
+O evento de _Logger_ é utilizado para termos uma melhor visualização dos logs que estão sendo enviados ou recebidos pelo SDK. Para esse tipo de envento começar a ser disparado é necessario definir como _true_ a terceiro parametro do _createOlos_.
+
+```js copy
+const jsLogger = true;
+
+createOlos(addrs, auth, jsLogger);
+```
+
+Esses logs sõa separados em 4 tipos diferentes LOGGER, ERROR, INFO e DEBUG.
+
+### LOGGER
+
+São tipos de logs padrões do sistema.
+
+### ERROR
+
+São tipos de logs de erro. Usado mais quando houve algum erro de comunicação entre o SDK e o Olos.
+
+### INFO
+
+São tipos de logs informativos.
+
+## Como escutar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("logger", callback);
+```

@@ -1,0 +1,11 @@
+# Refercallrequestfail
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ReferCallRequestFail", callback);
+```
+
+There was a failure in the ReferCall request _changestatus_. In case of success, the agent will receive a state event with the Wrap result, indicating that they have been released from the call and can proceed with dispositioning.
