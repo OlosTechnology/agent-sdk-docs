@@ -1,0 +1,36 @@
+{
+  "name": "agent-sdk-docs",
+  "version": "1.0.0",
+  "description": "Olos Agent SDK Documentation",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start"
+  },
+  "packageManager": "yarn@1.22.22",
+  "engines": {
+    "node": ">=20.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlosTechnology/agent-sdk-docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OlosTechnology/agent-sdk-docs/issues"
+  },
+  "homepage": "https://github.com/OlosTechnology/agent-sdk-docs#readme",
+  "overrides": {
+    "@tanstack/react-virtual": "3.9.0"
+  },
+  "dependencies": {
+    "next": "^16.0.8",
+    "nextra": "2.0.1",
+    "nextra-theme-docs": "2.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.10",
+    "typescript": "^4.9.3"
+  }
+}
