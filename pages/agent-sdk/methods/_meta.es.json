@@ -1,0 +1,11 @@
+{
+  "OlosAgentWS": "OlosAgentWs",
+  "OlosAgentChannelWs": "OlosAgentChannelWS",
+  "OlosUserConfigWS": "OlosUserConfigWs",
+  "OlosMailingWS": "OlosMailingWs",
+  "OlosIntegrationWs": "OlosIntegrationWs",
+  "OlosMcx": "OlosMcx",
+  "OlosRecordingRetrieve": "OlosRecordingRetrieve",
+  "OlosSoftPhone": "OlosSoftPhone",
+  "OlosVoiceSupportWS": "OlosVoiceSupportWs"
+}

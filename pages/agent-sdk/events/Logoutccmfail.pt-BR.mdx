@@ -1,0 +1,17 @@
+# Logoutccmfail
+
+Evento de falha no logout do operador no CCM (Campaign Control Module).
+
+## Como escutar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("LogoutCCMFail", callback);
+```
+
+## Payload
+
+```json copy
+{ "agentId": 108 }
+```

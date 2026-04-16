@@ -1,0 +1,355 @@
+# OlosAgentChannelWs
+
+The OlosAgentChannelWs contains all communication methods that allow control and management of the state of agents in Text Campaigns.
+
+## agentAuthenticationChat
+
+Agent authentication on the Olos platform, specific to Text Campaigns.
+
+```js copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentAuthenticationChat("login", "password", callback);
+```
+
+## agentAuthenticationAzureChat
+
+Authenticate the Agent on the Olos platform specifically for Text Campaigns for integrations with the Microsoft Azure Active Directory identity provider.
+
+```js copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentAuthenticationAzureChat("tokenId", callback);
+```
+
+## agentAuthenticationISAMChat
+
+Authenticate the Agent on the Olos platform specifically for Text Campaigns for integrations with the IBM ISAM (IBM Security Access Manager) identity provider.
+
+```js copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentAuthenticationISAMChat("tokenId", callback, callbackError);
+```
+
+## agentAuthenticationChatWithPause
+
+Authenticate the Agent on the Olos platform specifically for Text Campaigns, starting in a paused state.
+
+```js copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentAuthenticationChatWithPause(
+  "login",
+  "password",
+  "reasonCode",
+  callback
+);
+```
+
+## agentAuthenticationAzureChatWithPause
+
+Authenticate the Agent on the Olos platform specifically for Text Campaigns for integrations with Azure Active Directory, starting in a paused state.
+
+```js copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentAuthenticationAzureChat("tokenId", "reasonCode", callback);
+```
+
+## agentAuthenticationChatISAMWithPause
+
+Authenticate the Agent on the Olos platform specifically for OlosChannel, for integrations with IBM ISAM, starting in a paused state.
+
+```js copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentAuthenticationISAMChat(
+  "tokenId",
+  "reasonCode",
+  callback,
+  callbackError
+);
+```
+
+## agentReasonChatRequest
+
+Request the agent to switch to a paused state in text campaigns.
+
+```js copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentReasonChatRequest("reasonId");
+```
+
+## agentReasonChatRequestByCode
+
+Request the agent to switch to a paused state in text campaigns, using an integrator code.
+
+```js copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentReasonChatRequestByCode("reasonCode");
+```
+
+## agentIdleChatRequest
+
+Requests the Agent to transition from the paused state to the available state.
+
+```js copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentIdleChatRequest();
+```
+
+## agentChannelLogout
+
+Requests the Agent to log out from text campaigns.
+
+```js copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.agentChannelLogout();
+```
+
+## dispositionChat
+
+Requests setting a disposition for the current dialogue in text campaigns.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+type params = {
+  dialogId: string;
+  dispositionId: string;
+  dispositionCode: string;
+  year: string;
+  month: string;
+  day: string;
+  hour: string;
+  minute: string;
+  privateAgent: string;
+};
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.dispositionChat(params: params);
+```
+
+## messageChatRequest
+
+Requests the sending of a text campaign message to the customer.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+type params = {
+    dialogId: string,
+    message: string,
+    attachments: string
+};
+
+const agentChannel = new OlosAgentChannelWs();
+const chat = agentChannel.messageChatRequest(params: params);
+```
+
+## currentDialogsRequest
+
+Requests the dialogues from the text campaigns that the Agent is currently working on.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+type params = {
+    campaignId: string,
+};
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.currentDialogsRequest(params: params);
+```
+
+## messageNotice
+
+Requests the sending of a message status notification to the agent.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.messageNotice(campaignId: string, dialogId: string, messageid: string, status: string);
+```
+
+## listOnlineAgentsInCampaign
+
+Requests a list of agents currently logged in to the text campaign.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.listOnlineAgentsInCampaign(campaignId: string);
+```
+
+## typing
+
+Requests a notification that the agent is typing a message to send to the customer in text campaigns.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.typing(dialogId: string);
+```
+
+## listChatDispositions
+
+Requests the list of available dispositions for each text campaign.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.listChatDispositions(campaignId: string);
+```
+
+## listChatPauseReasons
+
+Requests the list of available pause reasons for an agent in text campaigns.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.listChatPauseReasons();
+```
+
+## resetChatInactivityTimer
+
+Requests the restart of the inactivity timer.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.resetChatInactivityTimer(dialogId: string);
+```
+
+## getMailingHistory
+
+Requests the history of a specific record in the contact list (mailing) for text campaigns.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.getMailingHistory(mailingName: string, recordId: string, maxResults: string, lastDaysLimit: string, dialogId: string);
+```
+
+## asyncMessageReply
+
+Requests the Agent to respond to a message derived from the email channel.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.asyncMessageReply(agentId: string, conversationId: string, content: string, attachments: string, formatedContent: string);
+```
+
+## asyncMessageDismiss
+
+Requests the Agent to dismiss a recently read message derived from the email channel.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.asyncMessageDismiss(agentId: string, conversationId: string);
+```
+
+## getAsyncMessage
+
+Requests a new message derived from the email channel.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.getAsyncMessage(agentId: string, conversationId: string);
+```
+
+## asyncMessageListRequest
+
+Requests a list of unread messages derived from the email channel that are assigned to the Agent.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.asyncMessageListRequest(agentId: string, campaignId: string);
+```
+
+## asyncMessageListRepliedRequest
+
+Requests a list of email channel messages that have already been responded to and are not available for a reply or disposition.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.asyncMessageListRepliedRequest(agentId: string, campaignId: string);
+```
+
+## asyncMessageResetReadingTimeoutRequest
+
+Requests a restart of the reading time for a text channel message.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.asyncMessageResetReadingTimeoutRequest(agentId: string, conversationId: string);
+```
+
+## asyncMessageHistoricalRequest
+
+Requests details of email channel messages exchanged in an Agent's conversation.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.asyncMessageHistoricalRequest(agentId: string, conversationId: string);
+```
+
+## transferChat
+
+Requests the transfer of a conversation from the text campaign to another campaign or Agent.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.transferChat(
+    dialogId: string,
+    dispositionId: string,
+    dispositionCode: string,
+    campaignIdDest: string,
+    agentIdDest: string,
+    year: string,
+    month: string,
+    day: string,
+    hour: string,
+    minute: string,
+    privateTransfer: boolean
+);
+```

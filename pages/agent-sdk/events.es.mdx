@@ -1,0 +1,25 @@
+# Eventos
+
+El Agent SDK es asíncrono, de esta forma, para cada método disparado retornará uno o más eventos y por consecuencia esos métodos no tendrán ningún retorno, así que cuando es hecha la inicialización, el SDK deberá comenzar a disparar los eventos de Olos para el Agente. 
+En esta sesión vamos a demostrar como su aplicación puede escuchar o ignorar esos eventos y las descripciones de funcionalidad de cada evento.
+
+
+## OlosOn
+
+Para que su aplicación consiga escuchar los eventos del Olos Agent SDK, será necesario `importar` la función del SDK llamada _olosOn_.
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("<nomeDoEvento>", callback);
+```
+
+## OlosOff
+
+A través del _olosOff_ el SDK entiende que a aplicación no quiere oír más el evento.
+
+```js copy
+import { olosOff } from "olosagentsdk";
+
+olosOff("<nomeDoEvento>", callback);
+```

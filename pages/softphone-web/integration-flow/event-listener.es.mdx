@@ -1,0 +1,39 @@
+# 5.	Escuchando eventos y mensajes.
+
+Después de que se incluye iframe en el documento, el siguiente paso es agregar un oyente de eventos al objeto de la ventana. Esto permitirá que su aplicación comience a escuchar los mensajes enviados por SoftphoneWeb iframe, lo que permite el control de eventos importantes relacionados con la conexión de Softphone.
+
+El oyente debe estar configurado para capturar tres mensajes de mensajes:
+
+- **disconnect** – Se activa cuando la sesión finaliza normalmente. Esto puede suceder cuando: Una de las partes cuelga la llamada, La sesión se termina de forma controlada.
+- **connect** – Se activa cuando la sesión se establece correctamente. Esto significa: la negociación SIP está completa y ambas partes pueden comunicarse.
+- **getUserMediaFail** – Se indica que hubo una falla al tratar de obtener acceso al micrófono, generalmente por bloqueo del navegador o ausencia de permiso otorgado por el usuario.
+
+Los mensajes siempre vienen en el siguiente formato: “softPhoneResponse|*tipo_mesage*”
+
+### Ejemplo:
+
+-	softPhoneResponse|disconnect
+-	softPhoneResponse|connect
+-	softPhoneResponse|getUserMediaFail
+
+A continuación se muestra un ejemplo de cómo agregar y tratar a este oyente en JavaScript
+
+```js
+window.addEventListener("message", function (event) {
+  if (typeof event.data === "string" && event.data.includes("softPhoneResponse|")) {
+    const [, messageType] = event.data.split("|");
+
+    switch (messageType) {
+      case "disconnect":
+        console.warn("Session disconnected.");
+        break;
+      case "connect":
+        console.log("Session connected.");
+        break;
+      case "getUserMediaFail":
+        console.error("Falla al acceder al micrófono.");
+        break;
+    }
+  }
+});
+```

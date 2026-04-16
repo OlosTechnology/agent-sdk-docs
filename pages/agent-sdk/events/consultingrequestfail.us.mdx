@@ -1,0 +1,15 @@
+# Consultingrequestfail
+
+Event received when the Consulting attempt encounters a dialing failure.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ConsultingRequestFail", callback);
+```
+
+## Payload
+
+GenericString (String): Description -> Description of the failure.

@@ -1,0 +1,15 @@
+# Manualcallrequestfail
+
+Event received when a manual call encounters an error.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ManualCallRequestFail", callback);
+```
+
+## Payload
+
+GenericString (string): Description -> Error identifier.

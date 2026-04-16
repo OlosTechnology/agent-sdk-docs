@@ -1,0 +1,14 @@
+# OlosSoftPhone
+
+The OlosSoftPhone allows controlling specific settings of the SoftPhone.
+
+## getPbxToLogin
+
+Allows applying specific settings to balance and distribute agent logins among servers.
+
+```ts copy
+import { OlosSoftPhone } from "olosagentsdk";
+
+const softPhone = new OlosSoftPhone();
+softPhone.getPbxToLogin(callbackSuccess: (data: any) => void, callbackError: (error: any) => void);
+```

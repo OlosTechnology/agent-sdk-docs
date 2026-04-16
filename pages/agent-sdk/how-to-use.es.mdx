@@ -1,0 +1,82 @@
+# Instalación
+
+Después de recibir las debidas autorizaciones, podemos instalar el SDK usando el _NPM_
+
+```js copy
+npm i @olostecnologia/olosagentsdk
+```
+
+# Inicialización
+
+Una vez completada la instalación, deberá arrancar el SDK con la función _createOlos_
+
+```js copy
+import { createOlos } from "olosagentsdk";
+
+const addrs = {
+  wsAgentCmd: "<server>:<porta>/WebAPIAgentControl/AgentCommand/",
+  wsAgentEvt: "<server>:<porta>/WebAPIAgentControl/AgentEvent/",
+  WsAgentCloud: "<server>:<porta>/WebAPIAgentControl/CloudAgent/",
+  wsMailingCmd: "<server>:<porta>/WebAPIMailingControl/MailingCommand/",
+  wsAgentConfig: "<server>:<porta>/WebAPIConfiguration/AgentConfig/",
+  wsVoiceSupport:
+    "<server>:<porta>/WsVoiceSupportIntegration/WsVoiceSupportIntegration.asmx",
+  WebAPIAgentControl: `<server>:<porta>/WebAPIAgentControl/`,
+  wsSoftPhone: `<server>:<porta>/WebAPISoftphone/Softphone/`,
+  wsMcx: `<server>:<porta>/WsMcx/wsmcx/Mcx/`,
+  wsRecordingRetrieve: `<server>:<porta>/WebApiRecordingRetrieve/RecordTextComm/`,
+};
+
+const auth = {
+  user: "user_integration",
+  password: "$&3245",
+  clientID: "<clientID>",
+  clientSecret: "<clientSecret>",
+};
+
+const jsLogger = false;
+
+const olosCallBack = () => {
+  console.log("Callback de inicialização");
+};
+
+createOlos(addrs, "polling", "native-token", {auth}, olosCallBack, jsLogger);
+```
+
+## Parámetros para inicializar
+
+Para inicializarmos o SDK é necessario passar três parâmetros para a função _createOlos_
+
+### addrs
+
+En este parámetro debemos informar al SDK qué direcciones API están disponibles para la integración.
+
+### connectorType
+
+En este parámetro debemos informar al SDK que tipo de conector estamos utilizando. Las opciones son: "polling" ou "olos-communicator"(Em desenvolvimento). 
+
+### connectorValidator
+
+En este parámetro debemos informar al SDK que tipo de validación estamos utilizando. Las opciones son:"native-token" ou "cognito-token".
+
+### auth
+
+En este parámetro debemos informar al SDK cuales son las informaciones para autenticar la API.
+
+```json copy
+{
+  "user": "Nombre del usuario de integración",
+  "password": "Contraseña del usuario de integración",
+  "clientID": "clientID provisto por Olos",
+  "clientSecret": "clientSecret provisto por Olos"
+}
+```
+
+### jsLogger
+
+En este parámetro informamos si el SDK se inicializa con la función logs activada
+
+# Eventos
+
+Tan pronto como se complete la inicialización del SDK, ya podemos inicializar la escucha de los eventos para el agente. Vamos a especificar mejor todo los tipos de eventos en la próxima sesión.
+

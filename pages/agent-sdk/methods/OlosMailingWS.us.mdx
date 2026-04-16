@@ -1,0 +1,120 @@
+# OlosMailingWS
+
+The OlosMailingWS allows control and management of contact lists (mailing) on the Olos platform.
+
+## listMailings
+
+Requests a listing of all contact lists (mailings) for a specific campaign.
+
+```ts copy
+import { OlosMailingWS } from "olosagentsdk";
+
+const mailingWS = new OlosMailingWS();
+mailingWS.listMailings(campaignId: any, callback?: (response: any) => void);
+```
+
+## finalizeClient
+
+Request to finalize a c in the contact list (mailing), providing the reason for completion.
+
+```ts copy
+import { OlosMailingWS } from "olosagentsdk";
+
+const mailingWS = new OlosMailingWS();
+mailingWS.finalizeClient(mailingName: any, dispId: any, customerId: any, callback?: (response: any) => void);
+```
+
+## finalizeClientByDispositionCode
+
+Request to finalize a client in the contact list (mailing), providing the reason for completion and an integrator's disposition code.
+
+```ts copy
+import { OlosMailingWS } from "olosagentsdk";
+
+const mailingWS = new OlosMailingWS();
+mailingWS.finalizeClientByDispositionCode(
+    campaignId: any,
+    mailingName: any,
+    dispCode: any,
+    customerId: any,
+    callback?: (response: any) => void
+);
+```
+
+## invalidatePhoneNumber
+
+Requests the completion of a customer's phone number in the contact list (mailing).
+
+```ts copy
+import { OlosMailingWS } from "olosagentsdk";
+
+const mailingWS = new OlosMailingWS();
+mailingWS.invalidatePhoneNumber(ddd: string, phoneNumber: any, callback?: (response: any) => void);
+```
+
+## insertPhoneNumber
+
+Requests the insertion of a phone number for the customer in the contact list (mailing), with the option for scheduling the contact.
+
+```ts copy
+import { OlosMailingWS } from "olosagentsdk";
+
+const mailingWS = new OlosMailingWS();
+mailingWS.insertPhoneNumber(ddd: any, phoneNumber: any, callback?: (response: any) => void);
+```
+
+## updateMailingData
+
+Requests changes or updates to the information in the fields of the contact list (mailing).
+
+```ts copy
+import { OlosMailingWS } from "olosagentsdk";
+
+const mailingWS = new OlosMailingWS();
+mailingWS.updateMailingData(field: any, data: any, callback?: (response: any) => void);
+```
+
+## upsertRecordData
+
+Requests the insertion or update of information in the fields of the contact list (mailing) in the format of the import file.
+
+```ts copy
+import { OlosMailingWS } from "olosagentsdk";
+
+const mailingWS = new OlosMailingWS();
+mailingWS.upsertRecordData(
+    { LayoutId, MailingDataJson, MailingName, CampaignId, CustomerId },
+    callbackSuccess: (response: any) => void,
+    callbackError: (response: any) => void
+);
+```
+
+## customerCallback
+
+Requests an assigned service (callback) for a specific customer.
+
+```ts copy
+import { OlosMailingWS } from "olosagentsdk";
+
+const mailingWS = new OlosMailingWS();
+mailingWS.customerCallback(
+    callbackData: CallbackData,
+    callbackSuccess: (response: any) => void,
+    callbackError: (response: any) => void
+);
+```
+
+## unfinalizeClient
+
+Requests that a customer completed (finalized) in the contact list (mailing) returns to the status of a free record.
+
+```ts copy
+import { OlosMailingWS } from "olosagentsdk";
+
+const mailingWS = new OlosMailingWS();
+mailingWS.unfinalizeClient(
+    { DispositionId, MailingName, CustomerId },
+    callbackSuccess: (response: any) => void,
+    callbackError: (response: any) => void
+);
+```

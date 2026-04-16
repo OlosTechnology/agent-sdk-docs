@@ -1,0 +1,21 @@
+# ListReasons
+
+This event is a return from the _listReasons_ method to list all available pauses for the agents.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ListReasons", callback);
+```
+
+## Payload
+
+```json copy
+[
+  { "reasonId": 101, "description": "Snack", "reasonCode": "99" },
+  { "reasonId": 102, "description": "Rest", "reasonCode": "01" },
+  { "reasonId": 153, "description": "System", "reasonCode": "999" }
+]
+```

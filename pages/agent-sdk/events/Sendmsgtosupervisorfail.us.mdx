@@ -1,0 +1,31 @@
+# Sendmsgtosupervisorfail
+
+This event is triggered when there is an error in sending the message to the supervisor, providing information about the errors.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("SendMsgToSupervisorFail", callback);
+```
+
+## Payload
+
+```json copy
+{
+  "agentId": 48,
+  "reason": 2,
+  "description": "SupervisorId 1584 not found or is not a supervisor or is not activated."
+}
+```
+
+## Possible errors
+
+1. GenericError
+2. AgentIdNotFound
+3. SupervisorNotFound
+4. ServiceNotAvail
+5. SysConfNotFound
+6. NotSupervisorOfAgent,
+7. EmptyMessage

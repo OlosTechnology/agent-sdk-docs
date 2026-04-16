@@ -1,0 +1,17 @@
+# Changepreviewcallresult
+
+Event received indicating the result of the call in Preview Dialing mode.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("PreviewCallResult", callback);
+```
+
+## Payload
+
+```json copy
+{ "callId": 91015, "CallResult": "Started", "phoneNumber": "99999999" }
+```

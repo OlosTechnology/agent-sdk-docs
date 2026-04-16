@@ -1,0 +1,9 @@
+# 4. Including the iframe in the application
+
+Insert the iframe with the URL built into the application's HTML. Make sure to correctly configure the security permissions to allow the use of the microphone:
+
+Example:
+
+```html
+<iframe id="SoftphoneWeb" src="https://[domain]/softphonewebrtc/?remote_address=atd-ecs01.olos.com.br&passcode=1184&agent_id=1208" allow="microphone" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
+```

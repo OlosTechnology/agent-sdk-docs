@@ -1,0 +1,17 @@
+# Changemanualcallstate
+
+Event received indicating the current state of the manual call.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ChangeManualCallState", callback);
+```
+
+## Payload
+
+```json copy
+{ "callId": 91015, "callState": "Started" }
+```

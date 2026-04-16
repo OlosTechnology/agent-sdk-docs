@@ -1,0 +1,15 @@
+# AgentAuthentication
+
+Evento de retorno do método AgentAuthentication.
+
+## Como escutar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("AgentAuthentication", callback);
+```
+
+## Payload
+
+agentId: ID do Agent autenticado ou 0 para caso de insucesso.

@@ -1,0 +1,15 @@
+# Activecall
+
+Event received when a call is answered.
+
+## How to listen
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ActiveCall", callback);
+```
+
+## Payload
+
+GenericInt (int): CallId (int) -> Call identifier.

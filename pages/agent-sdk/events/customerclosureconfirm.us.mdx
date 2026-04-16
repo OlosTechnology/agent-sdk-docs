@@ -1,0 +1,17 @@
+# Customerclosureconfirm
+
+Event received indicating that the customer under analysis was switched in Preview Dialing mode.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("CustomerClosureConfirm", callback);
+```
+
+## Payload
+
+```json copy
+{ "CampaignData": "", "CustomerId": "1245", "TableName ": "test" }
+```

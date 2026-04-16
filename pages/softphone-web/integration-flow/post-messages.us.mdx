@@ -1,0 +1,75 @@
+# 6.	Submission of commands to softphoneweb (postMessage)
+
+Once the connection message ("connect") has been received, the agent is ready to make calls. From this point on, your application can communicate with the SoftphoneWeb iframe by sending commands via postMessage.
+
+### **Message sending example**
+
+```js
+const iframeElement = document.getElementsByTagName("iframe")[0];
+iframeElement.contentWindow.postMessage(mensagem, iframeElement.src.split("?")[0]);
+```
+
+> ⚠️ Make sure to correctly capture the 'iframe' element and use the base domain as the targetOrigin for security.
+
+### **Available commands**
+
+Below are the commands that can be sent to the iframe and their description:
+
+1. **setSpeakVolume**: Sets the speaker volume  
+
+Example:
+```js
+`setSpeakVolume|0.8` // (sets the speaker volume to 80%)
+```
+
+2. **setMicVolume**: Sets the microphone volume  
+
+Example:
+```js
+`setMicVolume|0.6` // (sets the microphone volume to 60%)
+```
+
+3. **toggleMute**: Toggles between muting and unmuting the speaker  
+
+Example:
+```js
+`toggleMute`
+```
+
+4. **muteMic**: Mutes the agent's microphone  
+
+Example:
+```js
+`muteMic`
+```
+
+5. **unmuteMic**: Unmutes the agent's microphone  
+
+Example:
+```js
+`unmuteMic`
+```
+
+6. **sendDtmf**: Sends DTMF tones (numeric keypad keys during the call)  
+
+Example:
+```js
+`sendDtmf|5`
+```
+
+Below is a table mapping each DTMF command:
+
+| Value | Character |
+|-------|-----------|
+| 1     |           |
+| 2     | ABC       |
+| 3     | DEF       |
+| 4     | GHI       |
+| 5     | JKL       |
+| 6     | MNO       |
+| 7     | PQRS      |
+| 8     | TUV       |
+| 9     | WXYZ      |
+| *     |           |
+| 0     | +         |
+| #     |           |

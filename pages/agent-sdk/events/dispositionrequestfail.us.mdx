@@ -1,0 +1,15 @@
+# Dispositionrequestfail
+
+Event received in case of failure in the request for call completion (Disposition).
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("DispositionRequestFail", callback);
+```
+
+## Payload
+
+GenericString (string): CallId -> Call identifier.

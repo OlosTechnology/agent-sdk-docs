@@ -1,0 +1,17 @@
+# Customerclosureconfirm
+
+Evento recibido que indica que el cliente, en revisión, fue intercambiado en modo Preview Dialing.
+
+## Como escuchar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("CustomerClosureConfirm", callback);
+```
+
+## Payload
+
+```json copy
+{ "CampaignData": "", "CustomerId": "1245", "TableName ": "teste" }
+```

@@ -1,0 +1,17 @@
+# GetMySupervisor
+
+This event is a return from the getMySupervisor method with the supervisor data for the requested agent.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("GetMySupervisor", callback);
+```
+
+## Payload
+
+```json copy
+{ "userId": 49, "name": "Supervisor 1" }
+```

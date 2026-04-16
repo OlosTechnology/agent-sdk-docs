@@ -1,0 +1,15 @@
+# Onlinecampaignchangestatusid
+
+Evento recebido quando a campanha que o agente está logado muda de estado.
+
+## Como escutar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("OnlineCampaignChangeStatusId ", callback);
+```
+
+## Payload
+
+GenericInt (int): CampaignId -> identificador da campanha.

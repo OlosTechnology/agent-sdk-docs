@@ -1,0 +1,146 @@
+# OlosMcx
+
+OlosMcx le permite controlar y administrar la jornada del cliente en la plataforma Olos.
+
+## getJourney
+
+Solicita la creación de un identificador de Jornada del cliente.
+
+```ts copy
+import { OlosMcx } from "olosagentsdk";
+
+const mcx = new OlosMcx();
+mcx.getJourney(
+    timeout: number | null,
+    callbackSuccess: (response: McxResponse) => void,
+    callbackError: () => void
+);
+```
+
+## disposition
+
+Solicita que se tabule una llamada de voz.
+
+```ts copy
+import { OlosMcx } from "olosagentsdk";
+
+const mcx = new OlosMcx();
+mcx.disposition(
+    information: unknown,
+    timeout: number | null,
+    callbackSuccess: (response: McxResponse) => void,
+    callbackError: (err: any) => void
+);
+```
+
+## phoneInfoReq
+
+Solicita la información de contacto de un cliente.
+
+```ts copy
+import { OlosMcx } from "olosagentsdk";
+
+const mcx = new OlosMcx();
+mcx.phoneInfoReq(
+    information: unknown,
+    timeout: number | null,
+    callbackSuccess: (response: McxResponse) => void,
+    callbackError: () => void
+);
+```
+
+## search
+
+Solicita información de un registro en el Mailing de Olos Channel que contenga un determinado layout.
+
+```ts copy
+import { OlosMcx } from "olosagentsdk";
+
+const mcx = new OlosMcx();
+mcx.search(
+    information: unknown,
+    timeout: number | null,
+    callbackSuccess: (response: McxResponse) => void,
+    callbackError: () => void
+);
+```
+
+## delJourneyFromSms
+
+Solicita que se excluya la memoria del SMS, evitando que se active su control de timeout.
+
+```ts copy
+import { OlosMcx } from "olosagentsdk";
+
+const mcx = new OlosMcx();
+mcx.delJourneyFromSms(
+    information: unknown,
+    timeout: number | null,
+    callbackSuccess: (response: McxResponse) => void,
+    callbackError: () => void
+);
+```
+
+## recordInfo
+
+Solicita información de un registro particular en Olos Channel.
+
+```ts copy
+import { OlosMcx } from "olosagentsdk";
+
+const mcx = new OlosMcx();
+mcx.recordInfo(
+    information: unknown,
+    timeout: number | null,
+    callbackSuccess: (response: McxResponse) => void,
+    callbackError: () => void
+);
+```
+
+## recordInfoEncrypt
+
+Solicita información de un registro en particular (utilizado para la integración con OWI).
+
+```ts copy
+import { OlosMcx } from "olosagentsdk";
+
+const mcx = new OlosMcx();
+mcx.recordInfoEncrypt(
+    information: unknown,
+    timeout: number | null,
+    callbackSuccess: (response: McxResponse) => void,
+    callbackError: () => void
+);
+```
+
+## setRecordInUse
+
+Solicita que se reserve un contacto del Mailing para una campaña en particular.
+
+```ts copy
+import { OlosMcx } from "olosagentsdk";
+
+const mcx = new OlosMcx();
+mcx.setRecordInUse(
+    information: unknown,
+    timeout: number | null,
+    callbackSuccess: (response: McxResponse) => void,
+    callbackError: () => void
+);
+```
+
+## addHistory
+
+Solicita la inserción de un histórico para un contacto del Mailing. 
+
+```ts copy
+import { OlosMcx } from "olosagentsdk";
+
+const mcx = new OlosMcx();
+mcx.addHistory(
+    information: unknown,
+    timeout: number | null,
+    callbackSuccess: (response: McxResponse) => void,
+    callbackError: () => void
+);
+```

@@ -1,9 +1,12 @@
 import React from "react";
 import { DocsThemeConfig } from "nextra-theme-docs";
 
-const config: DocsThemeConfig = {
-  logo: <span>Olos para Desenvolvedores</span>,
-  head: (
+function Logo() {
+  return <span>Olos para Desenvolvedores</span>;
+}
+
+function Head() {
+  return (
     <>
       <title>Olos para Desenvolvedores</title>
       <link
@@ -19,7 +22,12 @@ const config: DocsThemeConfig = {
         href="https://www.olos.com.br/wp-content/uploads/2020/03/cropped-android-icon-192x192-1-192x192.png"
       />
     </>
-  ),
+  );
+}
+
+const config: DocsThemeConfig = {
+  logo: <Logo />,
+  head: <Head />,
   search: {
     placeholder: "Buscar...",
   },

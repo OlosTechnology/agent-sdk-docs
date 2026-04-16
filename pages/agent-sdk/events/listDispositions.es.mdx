@@ -1,0 +1,48 @@
+# ListDispositions
+
+Este evento es retorno del método _listDispositions_ para listar todos los disponibles para los agentes
+
+## Como escuchar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ListDispositions", callback);
+```
+
+## Payload
+
+```json copy
+[
+  {
+    "dispositionId": 105,
+    "description": "Teste Valdeci",
+    "dispositionType": "Success"
+  },
+  {
+    "dispositionId": 100,
+    "description": "Venda",
+    "dispositionType": "Success"
+  },
+  {
+    "dispositionId": 101,
+    "description": "Recusa",
+    "dispositionType": "Success"
+  },
+  {
+    "dispositionId": 103,
+    "description": "Follow Up",
+    "dispositionType": "Callback"
+  },
+  {
+    "dispositionId": 104,
+    "description": "Sem Contato",
+    "dispositionType": "Failure"
+  },
+  {
+    "dispositionId": 102,
+    "description": "Callback",
+    "dispositionType": "CallbackTargetConta"
+  }
+]
+```

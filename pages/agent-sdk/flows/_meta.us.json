@@ -1,0 +1,7 @@
+{
+  "basic": "Basic Voice",
+  "internal-transfer": "Internal Transfer",
+  "external-transfer": "External Transfer",
+  "chat": "Chat",
+  "email": "E-mail"
+}

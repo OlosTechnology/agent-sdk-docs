@@ -1,0 +1,17 @@
+# Listactivecalls
+
+Evento recibido por cada llamada activa del agente. Este evento sólo se recibe cuando se solicita a través del método ListActiveCalls
+
+## Como escuchar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ListActiveCalls", callback);
+```
+
+## Payload
+
+```json copy
+[{ "callId ": 945487, "customerCall ": true, "phoneNumber": 99999999 }]
+```

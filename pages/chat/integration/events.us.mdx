@@ -1,0 +1,350 @@
+# About Events
+
+Below is a list of events that are triggered to the agent, with their meaning.
+
+| eventTypeId | eventName | description |
+| ----------- | --------- | ----------- |
+| 2 | loginresponsetext | Fired when login is successful |
+| 4 | logoutresponsetext | Triggered when chat logout occurs or after login when the agent is not associated with any chat campaign. |
+| 5 | logincampaigntext | Triggered when the agent logs into a campaign |
+| 6 | logoutcampaigntext | Triggered when the agent logs out of a campaign |
+| 7 | screenpoptext | Triggered when a chat arrives for the agent |
+| 10 | messageresponsetext | Triggered when a message arrives for the agent |
+| 11 | typingtext | Triggered when the other end of the chat is typing |
+| 12 | changestatustext | Fired whenever a status change occurs on AMD |
+| 13 | inactivityalerttext | Triggered when agent downtime is reached |
+| 15 | pauseresponsetext | Triggered when the agent pauses |
+| 19 | dispositionresponsetext | Fired when a tab occurs |
+| 20 | dialogterminatedtext | Triggered when a chat ends |
+| 25 | listpausereasonsresponsetext | Returns agent pauses after request |
+| 50 | transferresponsetext | Returns whether the chat transfer request was made successfully. |
+| 51 | messagenoticetext | Returns whether the sent message was delivered |
+
+## Return examples per event
+
+<details>
+  <summary>Event - LoginCampaign</summary>
+  
+  ```json
+  {
+    "eventTypeId": 5,
+    "timestamp": "2024-04-26T15:35:10.9985663-03:00",
+    "campaignId": 8,
+    "eventData": {
+        "agentId": 1099,
+        "campaignId": 8,
+        "campaignName": "WebChat Test",
+        "campaignCode": ""
+    },
+    "channel": null
+}
+  ```
+</details>
+<details>
+  <summary>Event - Screenpop</summary>
+
+  ```json
+  {
+    "eventTypeId": 7,
+    "timestamp": "2024-04-26T14:11:37.3783724-03:00",
+    "campaignId": 8,
+    "eventData": {
+        "dialogId": "010dc36f98000000",
+        "journeyId": "010dc36f97000000",
+        "campaignId": 8,
+        "userNickName": "Olos Webchat",
+        "conversation": {
+            "botnckname": "EaglleHub",
+            "usrnckname": "Olos Webchat",
+            "conv": [
+                {
+                    "sender": 1,
+                    "messageId": "1714151470260",
+                    "text": "",
+                    "instant": "2024-04-26 14:11:10.269",
+                    "attachments": null
+                },
+                {
+                    "sender": 1,
+                    "messageId": "1714151470272",
+                    "text": "as",
+                    "instant": "2024-04-26 14:11:10.279",
+                    "attachments": null
+                },
+                {
+                    "sender": 0,
+                    "messageId": "1714151470272-0-293",
+                    "text": "Oi, aqui é o bot de homologação. O que você gostaria de fazer?\n\nhttp://www.google.com.br\n\nhttps://www.google.com.br#teste\n\nhttp://www.google.com.br#teste\n\n•IOS: http://apps.apple.com/br/app/samp/id1437529454 \n\n•Android: https://play.google.com/store/apps/details?id=com.solusappv2#",
+                    "instant": "2024-04-26 14:11:10.294",
+                    "attachments": null
+                },
+                {
+                    "sender": 1,
+                    "messageId": "1714151471510",
+                    "text": "agente",
+                    "instant": "2024-04-26 14:11:11.519",
+                    "attachments": null
+                },
+                {
+                    "sender": 0,
+                    "messageId": "1714151471510-0-529",
+                    "text": "Qual campanha vc quer usar?",
+                    "instant": "2024-04-26 14:11:11.531",
+                    "attachments": null
+                },
+                {
+                    "sender": 1,
+                    "messageId": "1714151472343",
+                    "text": "8",
+                    "instant": "2024-04-26 14:11:12.352",
+                    "attachments": null
+                }
+            ]
+        },
+        "extraData": "{\"mailingName\":\"$mailing.tablename\",\"recordId\":\"$mailing.recordId\"}",
+        "conversationId": "60cd4-4a-4a8-98f-4165c_11d1cfce86b"
+    },
+    "channel": "undefined"
+}
+  ```
+</details>
+<details>
+  <summary>Event - MessageReceived</summary>
+  
+  ```json
+  {
+    "eventTypeId": 10,
+    "timestamp": "2024-04-26T15:38:41.9631702-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "agentId": 1099,
+        "dialogId": "010dc383f3000000",
+        "messageId": "1714156696947",
+        "message": "Olá, tenho uma dúvida.",
+        "sender": 1,
+        "attachments": ""
+    },
+    "channel": "undefined"
+}
+  ```
+</details>
+<details>
+  <summary>Event - Typping</summary>
+  
+  ```json
+  {
+    "eventTypeId": 11,
+    "timestamp": "2024-04-26T15:46:23.3177076-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "agentId": 1099,
+        "dialogId": "010dc383f3000000"
+    },
+    "channel": "undefined"
+}
+  ```
+</details>
+<details>
+  <summary>Event - InactivityAlert</summary>
+  
+  ```json
+  {
+    "eventTypeId": 13,
+    "timestamp": "2024-04-26T15:50:15.6895083-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "agentId": 1099,
+        "dialogId": "010dc386ad000000",
+        "message": "Olá, está por aí?"
+    },
+    "channel": "undefined"
+}
+  ```
+</details>
+<details>
+  <summary>Event - PauseResponse</summary>
+  
+  ```json
+  {
+    "eventTypeId": 15,
+    "timestamp": "2024-04-26T15:55:03.7730282-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "agentId": 1099,
+        "reasonId": 100,
+        "reasonCode": null,
+        "errorCode": 0,
+        "errorMessage": null
+    },
+    "channel": null
+}
+  ```
+</details>
+<details>
+  <summary>Event - QuitPauseResponse</summary>
+  
+  ```json
+  {
+    "eventTypeId": 17,
+    "timestamp": "2024-04-26T15:54:20.237865-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "agentId": 1099,
+        "errorCode": 0,
+        "errorMessage": null
+    },
+    "channel": null
+}
+  ```
+</details>
+<details>
+  <summary>Event - DispositionResponse</summary>
+  
+  ```json
+  {
+    "eventTypeId": 19,
+    "timestamp": "2024-04-26T16:39:46.2684611-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "agentId": 1099,
+        "dialogId": "010dc39245000000",
+        "errorCode": 0,
+        "errorMessage": null
+    },
+    "channel": null
+}
+  ```
+</details>
+<details>
+  <summary>Event - DialogTerminated</summary>
+  
+  ```json
+  {
+    "eventTypeId": 20,
+    "timestamp": "2024-04-26T17:04:22.0682151-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "agentId": 1099,
+        "dialogId": "010dc3980b000000",
+        "dispositionId": 130,
+        "dispositionCode": ""
+    },
+    "channel": "undefined"
+}
+  ```
+</details>
+<details>
+  <summary>Event - ListPauseReasonsResponse</summary>
+  
+  ```json
+  {
+    "eventTypeId": 25,
+    "timestamp": "2024-04-26T17:11:56.9861754-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "errorCode": 0,
+        "errorMessage": null,
+        "agentId": 1099,
+        "pauseReasons": [
+            {
+                "id": 100,
+                "name": "Reuniao",
+                "type": 1,
+                "code": ""
+            },
+            {
+                "id": 101,
+                "name": "Almoco",
+                "type": 2,
+                "code": ""
+            },
+            {
+                "id": 102,
+                "name": "Lanche",
+                "type": 2,
+                "code": ""
+            },
+            {
+                "id": 103,
+                "name": "Saida Particular",
+                "type": 2,
+                "code": ""
+            },
+            {
+                "id": 104,
+                "name": "Banheiro",
+                "type": 2,
+                "code": ""
+            },
+            {
+                "id": 105,
+                "name": "Atendimento Recepcao",
+                "type": 1,
+                "code": ""
+            },
+            {
+                "id": 106,
+                "name": "Feedback",
+                "type": 1,
+                "code": ""
+            },
+            {
+                "id": 107,
+                "name": "Tabulacao",
+                "type": 1,
+                "code": ""
+            },
+            {
+                "id": 108,
+                "name": "Livre",
+                "type": 1,
+                "code": ""
+            },
+            {
+                "id": 109,
+                "name": "Carteirizacao",
+                "type": 1,
+                "code": ""
+            }
+        ]
+    },
+    "channel": null
+}
+  ```
+</details>
+<details>
+  <summary>Event - TransferResponse</summary>
+  
+  ```json
+  {
+    "eventTypeId": 50,
+    "timestamp": "2024-04-26T17:38:51.6711518-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "agentId": 1099,
+        "dialogId": "010dc3a010000000",
+        "errorCode": 0,
+        "errorMessage": null
+    },
+    "channel": null
+}
+  ```
+</details>
+<details>
+  <summary>Event - MessageNotice</summary>
+  
+  ```json
+  {
+    "eventTypeId": 51,
+    "timestamp": "2024-04-26T17:39:24.986602-03:00",
+    "campaignId": 0,
+    "eventData": {
+        "agentId": 1099,
+        "dialogId": "010dc3a02b000000",
+        "messageId": "010dc3a04c000000",
+        "status": "SENT"
+    },
+    "channel": null
+}
+  ```
+</details>

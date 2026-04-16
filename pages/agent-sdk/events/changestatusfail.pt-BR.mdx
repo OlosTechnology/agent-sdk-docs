@@ -1,0 +1,17 @@
+# Changestatusfail
+
+Evento recebido indicando o estado atual da chamada manual.
+
+## Como escutar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ChangeStatusFail", callback);
+```
+
+## Payload
+
+```json copy
+{ "callId": 91015, "callState": "Started" }
+```

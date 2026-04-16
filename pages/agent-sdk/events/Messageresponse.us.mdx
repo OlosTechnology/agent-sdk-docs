@@ -1,0 +1,22 @@
+# Messageresponse
+
+Event of success in sending a message to the chat.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("MessageResponse", callback);
+```
+
+## Payload
+
+```json copy
+{
+  "dialogId": "010270910a000000",
+  "reqId": "010270910a000000_5348425",
+  "errorCode": 0,
+  "errorMessage": null
+}
+```

@@ -1,0 +1,12 @@
+# 3. Construyendo la URL final del iframe
+
+Con la URL devuelta, ensamble la URL final agregando los parámetros requeridos a través de la cadena de consulta:
+
+- passcode → el código de 4 dígitos recibido previamente
+- agent_id → el ID del agente que inició sesión
+
+Ejemplo de URL final
+
+```
+https://[domain]/softphonewebrtc/?remote_address=atd-ecs01.olos.com.br&passcode=1184&agent_id=1208
+```

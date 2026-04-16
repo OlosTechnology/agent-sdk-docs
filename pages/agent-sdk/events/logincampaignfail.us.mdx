@@ -1,0 +1,22 @@
+# Logincampaignfail
+
+Event of failure in agent login for a campaign.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("LoginCampaignFail", callback);
+```
+
+## Payload
+
+```json copy
+{
+  "agentId": 108,
+  "campaignId": 2,
+  "campaignName": "Inbound1",
+  "campaignCode": "Inbound Campaign 1"
+}
+```

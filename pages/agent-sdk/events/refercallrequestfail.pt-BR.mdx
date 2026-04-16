@@ -1,0 +1,11 @@
+# Refercallrequestfail
+
+## Como escutar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("ReferCallRequestFail", callback);
+```
+
+Houve uma falha na requisição do ReferCall _changestatus_. No caso de sucesso o Agente receberá um evento do estado com o resultado de Wrap, informando que ele foi liberado da chamada e pode fazer a tabulação.

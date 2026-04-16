@@ -1,0 +1,17 @@
+# GetMySupervisor
+
+Este evento é retorno do método getMySupervisor com o dados do supervisor para o agente solicitado.
+
+## Como escutar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("GetMySupervisor", callback);
+```
+
+## Payload
+
+```json copy
+{ "userId": 49, "name": "Supervisor 1" }
+```

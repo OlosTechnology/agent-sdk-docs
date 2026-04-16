@@ -1,0 +1,17 @@
+# Loginccm
+
+Evento enviado quando for realizado o login do operador no módulo CCM (Campaign Control Module).
+
+## Como escutar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("LoginCCM", callback);
+```
+
+## Payload
+
+```json copy
+{ "agentId": 108, "agentName": "User 2" }
+```

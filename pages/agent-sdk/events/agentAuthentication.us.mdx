@@ -1,0 +1,15 @@
+# AgentAuthentication
+
+Return event from the AgentAuthentication method.
+
+## How to listen?
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("AgentAuthentication", callback);
+```
+
+## Payload
+
+agentId: ID of the authenticated agent or 0 in case of failure.

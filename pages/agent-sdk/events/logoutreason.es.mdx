@@ -1,0 +1,29 @@
+# Logoutreason
+
+Evento de retorno con la descripción del motivo del cierre de sesión.
+
+## Como escuchar
+
+```js copy
+import { olosOn } from "olosagentsdk";
+
+olosOn("LogoutReason", callback);
+```
+
+## Payload
+
+```json copy
+{ "agentId": 51, "reason": "RequestedByAgent" }
+```
+
+### Lista de Motivos Posibles
+
+1. RequestedByAgent
+2. RequestedByCCM
+3. Disconnected
+4. HeartBeat
+5. RequestedBySupervisor
+
+### Nota
+
+Este evento se producirá cada vez que el usuario cierre la sesión de la plataforma.
