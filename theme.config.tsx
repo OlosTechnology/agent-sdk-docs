@@ -28,6 +28,11 @@ function Head() {
 const config: DocsThemeConfig = {
   logo: <Logo />,
   head: <Head />,
+  useNextSeoProps() {
+    return {
+      titleTemplate: "Olos para Desenvolvedores",
+    };
+  },
   search: {
     placeholder: "Buscar...",
   },
