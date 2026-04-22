@@ -1,0 +1,24 @@
+# ChangeStatus
+
+Esse evento informa que houve uma mudança de status do agente no canal de texto na plataforma Olos. Nesse evento, recebe-se o status anterior e o novo status do agente, permitindo que o CRM possa acompanhar as mudanças de status do agente em tempo real. 
+
+Cada status tem seu ID, onde:
+
+```
+None: 0;
+Idle: 1;
+Pause: 4;
+Ending: 5;
+Chat: 11;
+Pausing: 62;
+End: 9999;
+```
+
+## Evento do tipo:
+<br/>
+- [ ] VOZ 
+- [x] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+Evento não é solicidado. Sempre que houver uma mudança de status do agente no canal de texto, esse evento será emitido automaticamente para o CRM.

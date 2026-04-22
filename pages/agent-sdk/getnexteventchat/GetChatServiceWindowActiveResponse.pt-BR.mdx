@@ -1,0 +1,15 @@
+# GetChatServiceWindowActiveResponse
+
+Evento sinaliza que a janela de atendimento WhatsApp do cliente está ativa, ou seja, o cliente tem a janela de atendimento do WhatsApp aberta e está disponível para receber mensagens. 
+
+## Evento do tipo:
+<br/>
+- [ ] VOZ 
+- [x] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgentChannel = new OlosAgentChannelWs()
+olosAgentChannel.getChatServiceWindowActive(conversationId)
+```

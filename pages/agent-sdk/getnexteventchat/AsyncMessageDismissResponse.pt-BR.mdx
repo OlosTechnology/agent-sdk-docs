@@ -1,0 +1,15 @@
+# AsyncMessageDismissResponse
+
+Evento que retorna a solicitação da dispensa de uma mensagem assíncrona recém lida.  Após ler uma mensagem, com o comando GetAsyncMessage, o Agente deve respondê-la e/ou tabulá-la, não sendo possível ler ou executar uma ação em alguma outra mensagem enquanto isso. Porém, o comando AsyncMessageDismissResponse faz com que essa mensagem retorne à caixa do Agente como se não tivesse sido lida e libera-o para executar outras tarefas. Lembrando que, ao voltar para a caixa, a mensagem está sujeita ao timeout de leitura.
+
+## Evento do tipo:
+<br/>
+- [ ] VOZ 
+- [x] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgentChannel = new OlosAgentChannelWs()
+olosAgentChannel.asyncMessageDismiss(agentId, conversationId)
+```

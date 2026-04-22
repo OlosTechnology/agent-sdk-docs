@@ -1,0 +1,16 @@
+# LogoutCcm
+
+Evento emitido quando o agente faz logout de telefonia.
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgent = new OlosAgentWs();
+olosAgent.agentLogout(); // Logout de telefonia
+olosAgent.coordinatedAgentLogout() // Logout coordenado, que inclui o logout de telefonia e de texto
+```

@@ -1,0 +1,15 @@
+# AsyncMessageScreenPop
+
+Evento contém os detalhes de uma mensagem assíncrona que lhe foi atribuída. Ao ser-lhe atribuída uma nova mensagem assíncrona, o Agente recebe um evento AsyncMessageReceived, contendo o seu identificador. Quando estiver pronto e em um status válido (Idle), o Agente deve solicitar a leitura da mensagem enviando um comando GetAsyncMessage, que será respondido com este evento.
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgentChannel = new OlosAgentChannelWs()
+olosAgentChannel.getAsyncMessage(agentId, encodeURIComponent(conversationId));
+```

@@ -1,0 +1,27 @@
+# ChangeManualCallState
+
+Evento disparado quando há uma mudança de estado na chamada manual do agente. Ou seja, quando ele disca, atende, desliga, etc, uma chamada, o agente recebe esse evento com o novo estado da chamada.
+
+Estados disponíveis:
+
+```
+- "Started"
+- "CustomerConnected"
+- "CustomerConnected"
+- "Finished"
+- "AgentConnected"
+```
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+Evento não é solicidado. Sempre que houver uma mudança de estado na chamada manual do agente, esse agente receberá esse evento. Então para fazer um teste, disque para um número, atenda uma chamada ou desligue uma chamada, e o agente receberá esse evento com o novo estado da chamada.
+
+```js
+const olosAgent = new OlosAgentWs()
+olosAgent.sendManualCallRequest(ddd, phone, campaignId)
+```

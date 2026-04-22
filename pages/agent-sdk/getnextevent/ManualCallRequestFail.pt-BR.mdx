@@ -1,0 +1,15 @@
+# ManualCallRequestFail
+
+Evento emitido quando o agente solicita a realização de uma chamada manual, mas ocorre uma falha no processo.
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgent = new OlosAgentWs();
+olosAgent.manualCallRequest(); // Solicitação de chamada manual
+```

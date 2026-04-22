@@ -1,0 +1,24 @@
+# ListHsmSentResponse
+
+Evento retorna a lista de HSMs enviados após solicitação. Cada item da lista contém o id do status de envio. Abaixo estão os possíveis status de envio:
+
+```
+SENT: "1",
+READ: "2",
+FAIL: "3",
+DELIVERED: "4",
+ACCEPTED: "5",
+UNKNOWN: "99"
+```
+
+## Evento do tipo:
+<br/>
+- [ ] VOZ 
+- [x] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgentChannel = new OlosAgentChannelWs()
+olosAgentChannel.listHsmSent(agentId)
+```

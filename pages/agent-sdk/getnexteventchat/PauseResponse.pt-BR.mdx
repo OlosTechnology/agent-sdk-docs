@@ -1,0 +1,17 @@
+# PauseResponse
+
+Evento disparado quando o agente solicita uma pausa. Caso o evento retorne com um código de erro, houve uma falha na solicitação da pausa. 
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgent = new OlosAgentWs();
+const olosAgentChannel = new OlosAgentChannelWs();
+olosAgentChannel.agentReasonChatRequest(reasonId); // Caso queira solicitar uma pausa apenas no canal de texto.
+olosAgent.coordinatedAgentPause(reasonId); // Caso queira solicitar uma pausa em todos canais
+```

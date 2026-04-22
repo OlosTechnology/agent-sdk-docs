@@ -1,0 +1,75 @@
+# ChangeStatus
+
+Evento disparado quando há uma mudança de status do agente. Ou seja, quando o agente muda seu status para disponível, falando, tabulando, etc, ele recebe esse evento com o novo status.
+
+Estados disponíveis:
+
+```
+Nothing
+Idle
+Talking
+Wrap
+Pause
+Pausing
+Ending
+TalkingWithPause
+WrapWithPause
+TalkingWithEnding
+WrapWithEnding
+Consulting
+Chat
+ChatWithPause
+ChatWithEnding
+ChatLoggedOut
+ConsultingWithPause
+ConsultingWithEnding
+Transfer
+Holding
+HoldingWithPause
+HoldingWithEnding
+ManualCall
+TalkingWithManualCall
+WrapWithManualCall
+ConsultingWithManualCall
+HoldingWithManualCall
+Redial
+PrivateCallback
+TalkingWithPrivateCallback
+WrapWithPrivateCallback
+ManualcallWithPrivateCallback
+ConsultingWithPrivateCallback
+HoldingWithPrivateCallback
+ThirdPartyCampaign
+PersonalCall
+TalkingWithPersonalCall
+WrapWithPersonalCall
+ManualcallWithPersonalCall
+ConsultingWithPersonalCall
+HoldingWithPersonalCall
+PersonalCallWithEnding
+PersonalCallWithPause
+Analyzing
+AnalyzingWithPersonalCall
+Attempting
+AttemptingWithPersonalCall
+AfterAttempting
+AfterAttemptWithPersonalCall
+AttemptingWithPrivateCallback
+RedialWithPersonalCall
+InConference
+InConferenceWithEnding
+InConferenceWithManualCall
+InConferenceWithPause
+InConferenceWithPersonalCall
+InConferenceWithPrivateCallback
+```
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+Evento não é solicidado. Sempre que houver uma mudança de status do agente, esse agente receberá esse evento. Então para fazer um teste, mude o status do agente na interface do Olos Agent ou via API, e o agente receberá esse evento com o novo status.
+

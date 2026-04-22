@@ -1,0 +1,15 @@
+# GetRecordHistory
+
+Evento retorna o histórico de tabulações relacionados a um contato, como interações anteriores, qual campanha foi atendida, quem atendeu, etc.
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgent = new OlosAgentWs();
+olosAgent.getRecordHistory(mailingName, recordId, customerId, maxResults, lastDaysLimit)
+```

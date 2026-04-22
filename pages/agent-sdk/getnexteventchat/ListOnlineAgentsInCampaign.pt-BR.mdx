@@ -1,0 +1,15 @@
+# ListOnlineAgentsInCampaign
+
+Evento retorna a lista de agentes online disponíveis em uma campanha específica.
+
+## Evento do tipo:
+<br/>
+- [ ] VOZ 
+- [x] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgentChannel = new OlosAgentChannelWs();
+olosAgentChannel.listOnlineAgentsInCampaign(campaignId)
+```

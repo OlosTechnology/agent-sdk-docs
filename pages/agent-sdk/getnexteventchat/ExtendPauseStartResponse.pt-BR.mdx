@@ -1,0 +1,15 @@
+# ExtendPauseStartResponse
+
+Evento retorna a resposta da solicitação de início de pausa estendida. Pode retornar com um código de erro que significa que houver um erro ao iniciar a pausa estendida. O evento, caso não ocorra erro, retorna o tempo extendido e se permite uma nova extensão de pausa estendida.
+
+## Evento do tipo:
+<br/>
+- [ ] VOZ 
+- [x] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgentChannel = new OlosAgentChannelWs()
+olosAgentChannel.extendPauseStart();
+```

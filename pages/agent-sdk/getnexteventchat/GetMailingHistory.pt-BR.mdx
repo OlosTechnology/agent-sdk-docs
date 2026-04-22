@@ -1,0 +1,21 @@
+# GetMailingHistory
+
+Evento retorna o histórico de mensagens enviadas para um contato identificado, incluindo detalhes como data, hora e conteúdo das mensagens.
+
+## Evento do tipo:
+<br/>
+- [ ] VOZ 
+- [x] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgentChannel = new OlosAgentChannelWs();
+olosAgentChannel.getMailingHistory(
+  mailingName,
+  recordId,
+  maxResults,
+  lastDaysLimit,
+  dialogId
+);
+```

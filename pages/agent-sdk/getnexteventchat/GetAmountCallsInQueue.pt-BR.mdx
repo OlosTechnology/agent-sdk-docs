@@ -1,0 +1,17 @@
+# GetAmountCallsInQueue
+
+Evento sinaliza a quantidade de chamadas em espera na fila. Esse evento retorna apenas um número inteiro representando a quantidade de chamadas em espera na fila.
+
+ATENÇÃO: Em breve esse evento será transferido para os eventos de voz (getNextEvent), ou seja, passará a ser um evento de voz e não mais um evento de texto. Fique atento às atualizações da documentação.
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgentChannel = new OlosAgentChannelWs()
+olosAgentChannel.getAmountCallsInQueue(campaignId)
+```

@@ -1,0 +1,28 @@
+# ThirdPartyEvent
+
+Evento de terceiros, ou seja, eventos que não são nativos da plataforma Olos, mas que podem ser integrados e utilizados para enriquecer a experiência do agente e do cliente durante as interações.
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+Exemplo de curl para solicitar a emissão do evento:
+
+```bash
+curl --location 
+'https://{DOMAIN}/WsAgentControl/WsAgentCommand.asmx/ThirdPartyEvent 
+Request' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'AgentId=52' \
+--data-urlencode 'EventData={ 
+"commands":[
+   {
+     "comandType":"CustomEvent", 
+     "commandParams":{}
+  }
+ ]
+}'
+```

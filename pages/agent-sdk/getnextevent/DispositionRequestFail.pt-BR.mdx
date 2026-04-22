@@ -1,0 +1,17 @@
+# DispositionRequestFail
+
+Evento emitido quando uma solicitação de tabulação falha.
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+Documentação do passo a passo para a emitir o evento 
+
+```js
+const olosAgent = new OlosAgentWs();
+olosAgent.dispositionCall(dispositionId, callId); // Para teste de falha, enviar um callId ou dispositionId inválido
+```

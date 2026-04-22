@@ -4,5 +4,7 @@
   "how-to-use": "Como usá-lo?",
   "methods": "Métodos",
   "events": "Eventos",
+  "getnexteventchat": "Get Next Event Chat",
+  "getnextevent": "Get Next Event",
   "flows": "Fluxos e Diagramas"
 }

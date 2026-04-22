@@ -1,0 +1,15 @@
+# RedialRequestFail
+
+Evento recebido quando uma solicitação de rediscagem falha, indicando que o sistema não conseguiu realizar a ação solicitada.
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgent = new OlosAgentWs();
+olosAgent.redialRequest(); // Solicitação de rediscagem para o última chamada
+```

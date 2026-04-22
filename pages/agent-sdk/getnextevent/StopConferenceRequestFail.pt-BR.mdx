@@ -1,0 +1,15 @@
+# StopConferenceRequestFail
+
+Evento disparado quando a solicitação para encerrar uma conferência falha, indicando que a conferência não foi encerrada.
+
+## Evento do tipo:
+<br/>
+- [x] VOZ 
+- [ ] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgent = new OlosAgentWs();
+olosAgent.stopConferenceRequest(); // Solicitação para encerrar a conferência
+```

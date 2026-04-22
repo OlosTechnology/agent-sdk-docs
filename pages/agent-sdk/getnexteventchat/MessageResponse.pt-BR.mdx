@@ -1,0 +1,15 @@
+# MessageResponse
+
+Evento disparado quando o agente envia uma mensagem de chat. Caso o evento retorne com um código de erro, houve uma falha no envio da mensagem.
+
+## Evento do tipo:
+<br/>
+- [ ] VOZ 
+- [x] TEXTO
+
+## Como solicitar a emissão do evento a partir do CRM
+
+```js
+const olosAgentChannel = new OlosAgentChannelWs();
+olosAgentChannel.messageChatRequest(dialogId, message, attachments);
+```
