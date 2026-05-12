@@ -1,3 +1,8 @@
 {
-  "authentication": "Authentication"
+  "authentication": "Authentication",
+  "chat-history": "Chat History",
+  "chat-inbox": "Chat Inbox",
+  "events": "Events",
+  "login-logout": "Login/Logout",
+  "manual-message-sending": "Manual Message Sending"
 }
