@@ -1,0 +1,115 @@
+# Chat Inbox
+
+With the chat inbox, it is possible to list open, closed, waiting, resolved, or removed service chats, separated by category.
+
+### Available Statuses
+
+| Value | Status |
+|---|---|
+| `1` | `OPENED` |
+| `2` | `WAITING` |
+| `3` | `SOLVED` |
+| `4` | `CLOSED` |
+| `5` | `REMOVED` |
+
+---
+
+## 1. List Inbox Chats
+
+When starting the application, call the two APIs below to retrieve the **open** and **closed** inbox chats. Each chat has the `inboxStatusId` property, which represents its current status.
+
+### 1.1 Method
+
+| | |
+|---|---|
+| **SDK** | `olosAgentChannel.listInboxChats(closed)` |
+| **Endpoint** | `POST WebApiAgentControl/AgentCommand/ListInboxChats` |
+| **Listener** | `olosOn("listinboxchatsresponsetext", callback)` |
+
+#### Payload
+
+```json
+{
+  "AgentId": 0,
+  "Closed": true
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `AgentId` | `number` | Agent ID |
+| `Closed` | `boolean` | `true` to list closed chats; `false` for open chats |
+
+### 1.2 Return
+
+The return is received via `getNextEventChat` with `eventTypeId = 61`. The `dialogues` field contains the list of chats.
+
+```json
+{
+  "eventTypeId": 61,
+  "timestamp": "2026-05-08T14:50:45.0667717-03:00",
+  "campaignId": 0,
+  "eventData": {
+    "agentId": 0,
+    "errorCode": 0,
+    "errorMessage": null,
+    "messageKey": "",
+    "messageKeyVars": null,
+    "dialogues": []
+  },
+  "channel": null
+}
+```
+
+---
+
+## 2. Check Active Service Window
+
+When clicking on a chat from the list, it is necessary to check whether the service window is open before sending messages to the customer. **Messages can only be sent while the service window is active.**
+
+### 2.1 Method
+
+| | |
+|---|---|
+| **SDK** | `olosAgentChannel.getChatServiceWindowActive(conversationId)` |
+| **Endpoint** | `POST WebApiAgentControl/AgentCommand/GetChatServiceWindowActive` |
+| **Listener** | `olosOn("getchatservicewindowactiveresponsetext", callback)` |
+
+#### Payload
+
+```json
+{
+  "AgentId": 0,
+  "ConversationId": "xxx"
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `AgentId` | `number` | Agent ID |
+| `ConversationId` | `string` | Conversation ID of the selected chat |
+
+### 2.2 Return
+
+The return is received via `getNextEventChat` with `eventTypeId = 67`. The `result` field indicates whether the service window is active.
+
+- `true` — window open, sending messages allowed
+- `false` — window closed, sending messages blocked
+
+```json
+{
+  "eventTypeId": 67,
+  "timestamp": "2026-05-08T15:07:06.6449342-03:00",
+  "campaignId": 0,
+  "eventData": {
+    "conversationId": "xxx",
+    "result": false,
+    "agentId": 0,
+    "errorCode": 0,
+    "errorMessage": "",
+    "messageKey": "",
+    "messageKeyVars": ""
+  },
+  "channel": null
+}
+```

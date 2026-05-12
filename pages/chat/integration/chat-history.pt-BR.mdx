@@ -1,0 +1,134 @@
+# Histórico de Conversas e Detalhes de Conversas
+
+Abaixo estão descritos métodos para acessar o histórico de conversas e os detalhes de uma conversa específica. Recomenda-se implementar essas chamadas via `fetch` diretamente no front-end.
+
+## 1. Histórico de Conversas Anteriores
+
+### 1.1 Método
+
+| | |
+|---|---|
+| **SDK** | `olosRecordingRetrieve.getAgentConversation(agentId, conversationDate, maxLimit, callbackSuccess, callbackError)` |
+| **Endpoint** | `GET WebApiRecordingRetrieve/RecordTextComm/Agent?agentId={agentId}&conversationDate={data}&maxLimit={limite}` |
+
+#### Parâmetros de Query
+
+| Parâmetro | Exemplo | Descrição |
+|---|---|---|
+| `agentId` | `0` | ID do agente |
+| `conversationDate` | `08%2F05%2F2026` | Data das conversas (formato `DD/MM/YYYY`, URL-encoded) |
+| `maxLimit` | `100` | Número máximo de registros retornados |
+
+### 1.2 Retorno
+
+Retorna todas as interações tabuladas do agente. Para uso correto:
+
+- **Filtrar** pelo campo `channelId = "whatsapp"`
+- **Remover duplicatas** por `conversationId` (cada tabulação gera um novo registro)
+
+```json
+[
+  {
+    "conversationId": "",
+    "sessionId": "",
+    "messageId": "",
+    "message": "",
+    "dialogName": "",
+    "journeyId": "",
+    "messageDate": "",
+    "mailingName": "",
+    "channelId": "whatsapp",
+    "campaignId": "21",
+    "campaignName": null,
+    "campaignTypeId": null,
+    "mailingData": "",
+    "dispositionId": "0",
+    "dispositionName": null,
+    "userId": "",
+    "userName": "",
+    "agentId": "",
+    "agentName": "",
+    "botname": "",
+    "botId": "",
+    "customerId": "",
+    "miliestone": null,
+    "sourceCampaignId": "20",
+    "direction": "S",
+    "to": "",
+    "subject": "",
+    "attachment": "",
+    "formatedContent": "",
+    "campaignData": null,
+    "screenRecord": null,
+    "dialogVariables": "",
+    "supervisorId": "",
+    "agentAssistantId": ""
+  }
+]
+```
+
+---
+
+## 2. Detalhe de uma Conversa (Histórico de Mensagens)
+
+> **Paginação:** A API não possui paginação nativa. Recomenda-se implementar paginação no front-end.
+
+### 2.1 Método
+
+| | |
+|---|---|
+| **SDK** | `olosRecordingRetrieve.getConversation(conversatioId, conversationDate, maxLimit, callbackSuccess, callbackError)` |
+| **Endpoint** | `GET WebApiRecordingRetrieve/RecordTextComm/Conversation?conversatioId={conversationId}&conversationDate={data}&maxLimit={limite}` |
+
+#### Parâmetros de Query
+
+| Parâmetro | Exemplo | Descrição |
+|---|---|---|
+| `conversatioId` | `xxx` | ID da conversa |
+| `conversationDate` | `08/05/2026` | Data da conversa (formato `DD/MM/YYYY`) |
+| `maxLimit` | `100` | Número máximo de registros retornados |
+
+### 2.2 Retorno
+
+Retorna o histórico completo de mensagens trocadas em uma conversa. O campo `direction` indica o sentido da mensagem:
+
+```json
+[
+  {
+    "conversationId": "",
+    "sessionId": "",
+    "messageId": "",
+    "message": "",
+    "dialogName": "",
+    "journeyId": "",
+    "messageDate": "2026-05-08 15:36:17.454",
+    "mailingName": "Manual",
+    "channelId": "whatsapp",
+    "campaignId": "",
+    "campaignName": null,
+    "campaignTypeId": null,
+    "mailingData": "",
+    "dispositionId": "0",
+    "dispositionName": null,
+    "userId": "",
+    "userName": "",
+    "agentId": "",
+    "agentName": null,
+    "botname": "bot-wabiz",
+    "botId": "d88ac-ab-416-b9d-5ad3d",
+    "customerId": "",
+    "miliestone": null,
+    "sourceCampaignId": "",
+    "direction": "I",
+    "to": "",
+    "subject": "",
+    "attachment": "",
+    "formatedContent": "",
+    "campaignData": null,
+    "screenRecord": null,
+    "dialogVariables": "",
+    "supervisorId": "",
+    "agentAssistantId": ""
+  }
+]
+```

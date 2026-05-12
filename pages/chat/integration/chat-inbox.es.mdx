@@ -1,0 +1,115 @@
+# Chat Inbox
+
+Con el inbox de chat, es posible listar los chats de atención abiertos, cerrados, en espera, resueltos o eliminados, separados por categoría.
+
+### Estados disponibles
+
+| Valor | Estado |
+|---|---|
+| `1` | `OPENED` |
+| `2` | `WAITING` |
+| `3` | `SOLVED` |
+| `4` | `CLOSED` |
+| `5` | `REMOVED` |
+
+---
+
+## 1. Listar Chats en el Inbox
+
+Al iniciar la aplicación, llamar a las dos APIs a continuación para obtener los chats del inbox **abiertos** y **cerrados**. Cada chat tiene la propiedad `inboxStatusId`, que representa su estado actual.
+
+### 1.1 Método
+
+| | |
+|---|---|
+| **SDK** | `olosAgentChannel.listInboxChats(closed)` |
+| **Endpoint** | `POST WebApiAgentControl/AgentCommand/ListInboxChats` |
+| **Listener** | `olosOn("listinboxchatsresponsetext", callback)` |
+
+#### Payload
+
+```json
+{
+  "AgentId": 0,
+  "Closed": true
+}
+```
+
+| Campo | Tipo | Descripción |
+|---|---|---|
+| `AgentId` | `number` | ID del agente |
+| `Closed` | `boolean` | `true` para listar chats cerrados; `false` para chats abiertos |
+
+### 1.2 Retorno
+
+El retorno llega a través de `getNextEventChat` con `eventTypeId = 61`. El campo `dialogues` contiene la lista de chats.
+
+```json
+{
+  "eventTypeId": 61,
+  "timestamp": "2026-05-08T14:50:45.0667717-03:00",
+  "campaignId": 0,
+  "eventData": {
+    "agentId": 0,
+    "errorCode": 0,
+    "errorMessage": null,
+    "messageKey": "",
+    "messageKeyVars": null,
+    "dialogues": []
+  },
+  "channel": null
+}
+```
+
+---
+
+## 2. Verificar Ventana de Atención Activa
+
+Al hacer clic en un chat de la lista, es necesario verificar si la ventana de atención está abierta antes de enviar mensajes al cliente. **Solo es posible enviar mensajes mientras la ventana de atención esté activa.**
+
+### 2.1 Método
+
+| | |
+|---|---|
+| **SDK** | `olosAgentChannel.getChatServiceWindowActive(conversationId)` |
+| **Endpoint** | `POST WebApiAgentControl/AgentCommand/GetChatServiceWindowActive` |
+| **Listener** | `olosOn("getchatservicewindowactiveresponsetext", callback)` |
+
+#### Payload
+
+```json
+{
+  "AgentId": 0,
+  "ConversationId": "xxx"
+}
+```
+
+| Campo | Tipo | Descripción |
+|---|---|---|
+| `AgentId` | `number` | ID del agente |
+| `ConversationId` | `string` | ID de la conversación del chat seleccionado |
+
+### 2.2 Retorno
+
+El retorno llega a través de `getNextEventChat` con `eventTypeId = 67`. El campo `result` indica si la ventana de atención está activa.
+
+- `true` — ventana abierta, envío de mensajes permitido
+- `false` — ventana cerrada, envío de mensajes bloqueado
+
+```json
+{
+  "eventTypeId": 67,
+  "timestamp": "2026-05-08T15:07:06.6449342-03:00",
+  "campaignId": 0,
+  "eventData": {
+    "conversationId": "xxx",
+    "result": false,
+    "agentId": 0,
+    "errorCode": 0,
+    "errorMessage": "",
+    "messageKey": "",
+    "messageKeyVars": ""
+  },
+  "channel": null
+}
+```
