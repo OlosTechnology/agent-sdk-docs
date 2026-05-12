@@ -1,0 +1,206 @@
+# Disparo Manual
+
+O Disparo Manual é um recurso que permite o envio de mensagens HSM (Highly Structured Message) de forma manual, sem a necessidade de um fluxo automatizado, para números WhatsApp. 
+
+## 1. Listar Campanhas
+
+Retorna as campanhas de bot disponíveis para envio manual de HSM.
+
+### 1.1 Método
+
+| | |
+|---|---|
+| **SDK** | `olosAgentChannel.listCampaignHsmManual()` |
+| **Endpoint** | `GET WebApiAgentControl/AgentCommand/ListCampaignHsmManual?AgentId={agentId}` |
+
+### 1.2 Retorno
+
+```json
+[
+  {
+    "campaignId": 20,
+    "description": "Bot Homolog HSM Manual"
+  }
+]
+```
+
+---
+
+## 2. Listar Templates HSM
+
+Retorna os templates HSM associados a uma campanha de bot específica.
+
+### 2.1 Método
+
+| | |
+|---|---|
+| **SDK** | `olosAgentChannel.listTemplateHsmManual(campaignId)` |
+| **Endpoint** | `GET WebApiAgentControl/AgentCommand/ListTemplateHsmManual?AgentId={agentId}&CampaignId={campaignId}` |
+
+### 2.2 Parâmetros
+
+| Parâmetro | Tipo | Descrição |
+|---|---|---|
+| `campaignId` | `number` | ID da campanha retornado em [Listar Campanhas](#1-listar-campanhas) |
+
+### 2.3 Retorno
+
+```json
+[
+  {
+    "templateId": "xx",
+    "name": "xx",
+    "category": "MARKETING",
+    "status": "APPROVED",
+    "language": "pt_BR",
+    "body": "Olá *{{1}}*, em nossa jornada de *testes* você poderá aproveitar _experiencias diferenciadas_ para conhecer novas funcionalidades e serviços do *Olos Text*. \n\nVamos juntos ?🙌",
+    "headerFormat": "",
+    "inboundCampaignId": 21
+  }
+]
+```
+
+### 2.4 Sobre os Templates
+
+O campo `body` de cada item representa o conteúdo do template. As convenções de formatação são:
+
+- **Variáveis:** indicadas pelo padrão `{{x}}` (ex: `{{1}}`, `{{2}}`), podendo ser substituídas por valores dinâmicos.
+- **Negrito:** texto entre asteriscos — `*texto*`
+- **Itálico:** texto entre underscores — `_texto_`
+
+---
+
+## 3. Envio
+
+Realiza o envio de uma mensagem HSM manual para um número WhatsApp específico.
+
+### 3.1 Método
+
+| | |
+|---|---|
+| **SDK** | `olosAgentChannel.sendManualHsmRequest(AgentId, ChatCampaignId, BotCampaignId, CustomerPhoneNumber, TemplateId, TemplateParams, TemplateHeaderUrl, TemplateMessage, ConversationId, ExtraData)` |
+| **Endpoint** | `POST WebApiAgentControl/AgentCommand/SendManualHsmRequest` |
+| **Listener** | `olosOn("sendmanualhsmrequestresponsetext", callback)` |
+
+#### Payload
+
+```json
+{
+  "AgentId": 0,
+  "ChatCampaignId": 0,
+  "BotCampaignId": 0,
+  "CustomerPhoneNumber": "",
+  "TemplateId": "",
+  "TemplateParams": "",
+  "TemplateHeaderUrl": "",
+  "ConversationId": "",
+  "TemplateMessage": "Olá *teste*, em nossa jornada de *testes* você poderá aproveitar _experiencias diferenciadas_ para conhecer novas funcionalidades e serviços do *Olos Text*. \n\nVamos juntos ?🙌",
+  "ExtraData": "{\"Nome\":\"teste\",\"Empresa\":\"teste\"}"
+}
+```
+
+#### Descrição dos campos do Payload
+
+| Campo | Obrigatório | Descrição |
+|---|---|---|
+| `AgentId` | Sim | ID do agente |
+| `ChatCampaignId` | Sim | ID da campanha de chat (inbound) |
+| `BotCampaignId` | Sim | ID da campanha de bot (HSM manual) |
+| `CustomerPhoneNumber` | Sim | Número de telefone do destinatário |
+| `TemplateId` | Sim | ID do template obtido em [Listar Templates HSM](#2-listar-templates-hsm) |
+| `TemplateParams` | Sim | String com índice e valor das variáveis separados por `\|`. Ex: `1:var1\|2:var2` |
+| `TemplateHeaderUrl` | Não | URL do cabeçalho (pode ser vazio) |
+| `ConversationId` | Não | ID da conversa (pode ser vazio) |
+| `TemplateMessage` | Sim | Texto do template com as variáveis já substituídas |
+| `ExtraData` | Não | JSON stringificado com dados extras do contato. Não influencia no envio (pode ser vazio) |
+
+### 3.2 Retorno
+
+O retorno chega via `getNextEventChat` com `eventTypeId = 63`.
+
+- Se o envio for **bem-sucedido**, o campo `messageId` será preenchido.
+- Se houver **erro**, os campos `errorCode` e `errorMessage` serão preenchidos.
+
+```json
+{
+  "eventTypeId": 63,
+  "timestamp": "2026-05-08T15:51:21.613648-03:00",
+  "campaignId": 0,
+  "eventData": {
+    "messageId": "",
+    "conversationId": "",
+    "agentId": 0,
+    "errorCode": 0,
+    "errorMessage": "",
+    "messageKey": "",
+    "messageKeyVars": ""
+  },
+  "channel": null
+}
+```
+
+## 4. Histórico de HSMs Enviados
+
+### 4.1 Método
+
+| | |
+|---|---|
+| **SDK** | `olosAgentChannel.listHsmSent(agentId)` |
+| **Endpoint** | `POST WebApiAgentControl/AgentCommand/ListHsmSent` |
+| **Listener** | `olosOn("listhsmsentresponsetext", callback)` |
+
+#### Payload
+
+```json
+{
+  "AgentId": 0
+}
+```
+
+### 4.2 Retorno
+
+O retorno chega via `getNextEventChat` com `eventTypeId = 69`. O campo `hsms` contém a lista de HSMs enviados.
+
+Cada item da lista possui:
+
+| Campo | Descrição |
+|---|---|
+| `sentResult` | Status do envio do HSM. Valores possíveis: `Accepted`, `Sent failure` |
+| `lastEvent` | Último status rastreado da mensagem. Valores possíveis: `Accepted`, `SENT`, `DELIVERED`, `READ`, `Unknown`, `Sent failure` |
+
+```json
+{
+  "eventTypeId": 69,
+  "timestamp": "2026-05-08T17:48:26.6529948-03:00",
+  "campaignId": 0,
+  "eventData": {
+    "agentId": 0,
+    "errorCode": 0,
+    "errorMessage": null,
+    "messageKey": "AMD0000",
+    "messageKeyVars": null,
+    "hsms": [
+      {
+        "agentId": 0,
+        "agentName": "",
+        "botConversationId": "",
+        "messageId": "",
+        "botCampaignId": 0,
+        "botCampaignName": "Bot Homolog HSM Manual",
+        "customerPhoneNumber": "",
+        "templateId": "",
+        "templateName": "",
+        "templateText": "",
+        "sentDate": "2026-05-08 15:51:20",
+        "sentResult": "Accepted",
+        "lastUpdate": "2026-05-08 15:51:24",
+        "lastEvent": "SENT",
+        "eventErrorMsg": "",
+        "extraData": "",
+        "wabPhoneNumberId": ""
+      }
+    ]
+  },
+  "channel": null
+}
+```
