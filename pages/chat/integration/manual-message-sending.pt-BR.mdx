@@ -139,6 +139,16 @@ O retorno chega via `getNextEventChat` com `eventTypeId = 63`.
 }
 ```
 
+### 3.3 Comportamento após envio bem-sucedido
+
+Após um envio com sucesso, o Olos também dispara um evento de **screenpop**, como se um novo chat tivesse sido entregue ao agente.
+
+Nesse cenário, o chat chega **sem** a propriedade `journeyId`. Isso indica que a plataforma ainda está aguardando a resposta do cliente para então abrir a conversa efetivamente.
+
+Por esse motivo, quando o chat não contiver `journeyId`, a aplicação do agente deve bloquear o envio de resposta até que a conversa seja aberta.
+
+
+
 ## 4. Histórico de HSMs Enviados
 
 ### 4.1 Método

@@ -139,6 +139,14 @@ The return is received via `getNextEventChat` with `eventTypeId = 63`.
 }
 ```
 
+### 3.3 Behavior after successful sending
+
+After a successful send, Olos also triggers a **screenpop** event, as if a new chat had just been delivered to the agent.
+
+In this scenario, the chat arrives **without** the `journeyId` property. This means the platform is still waiting for the customer response before effectively opening the conversation.
+
+For this reason, when a chat does not contain `journeyId`, the agent application must block message replies until the conversation is opened.
+
 ## 4. HSMs Sent History
 
 ### 4.1 Method
