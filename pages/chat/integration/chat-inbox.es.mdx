@@ -113,3 +113,70 @@ El retorno llega a través de `getNextEventChat` con `eventTypeId = 67`. El camp
   "channel": null
 }
 ```
+
+## 3. Cambio de estado de una conversación
+
+Para cambiar el estado de una conversación a "OPENED", "WAITING", "SOLVED", "CLOSED", utilizamos el endpoint a continuación:
+
+### 3.1 Método
+
+| | |
+|---|---|
+| **SDK** | `olosAgentChannel.updateChatInboxStatus(conversationId, statusId)` |
+| **Endpoint** | `POST WebApiAgentControl/AgentCommand/UpdateChatInboxStatus` |
+| **Listener** | `olosOn("updateinboxstatusresponsetext", callback)` |
+
+#### Payload
+
+```json
+{
+  "ConversationId": "",
+  "InboxStatusId": 1,
+  "AgentId": 0
+}
+```
+
+| Campo | Tipo | Descripción |
+|---|---|---|
+| `ConversationId` | `string` | ID de la conversación |
+| `InboxStatusId` | `number` | Id del estado |
+| `AgentId` | `number` | Id del agente |
+
+### 3.2 Retorno
+
+El retorno llega a través de `getNextEventChat (UpdateInboxStatusResponse)` con `eventTypeId = 58`. Donde se indica si hubo algún error.
+
+```json
+{
+  "eventTypeId": 58,
+  "timestamp": "2026-05-08T15:07:06.6449342-03:00",
+  "campaignId": 0,
+  "eventData": {
+    "conversationId": "",
+    "agentId": 1109,
+    "errorCode": 0,
+    "errorMessage": "",
+    "messageKey": "AMD0000",
+    "messageKeyVars": ""
+  },
+  "channel": null
+}
+```
+
+### 3.3 Retorno de la modificación
+
+El retorno llega a través de `getNextEventChat (UpdateInboxStatusNotice)` con `eventTypeId = 59`. Donde `inboxStatusId` es el estado actual de la conversación.
+
+```json
+{
+  "eventTypeId": 58,
+  "timestamp": "2026-05-08T15:07:06.6449342-03:00",
+  "campaignId": 0,
+  "eventData": {
+    "agentId": 0,
+    "conversationId": "",
+    "inboxStatusId": 2
+  },
+  "channel": null
+}
+```
