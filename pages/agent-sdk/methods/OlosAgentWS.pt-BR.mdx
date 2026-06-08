@@ -503,7 +503,13 @@ agentWS.dispositionCall(dispositionId: any, forceCallId: any);
 
 ## consultingRequest
 
-Solicita uma transferência assista para uma outra campanha.
+Solicita uma transferência assista para uma outra campanha ou para um número externo.
+
+>  **Obs 1:** Para consultas de campanhas, o campaignld deverá ser maior que 0 e o phoneNumber deverá ser uma string vazia
+
+>  **Obs 2:** Para consultar um número externo, o campaignld deve ser 0 e o phoneNumber deverá ser DDD + Telefone.
+
+No caso de uma consulta para campanha, será realizada uma transferência cega, ou seja, o cliente será conectado diretamente à consulta e desconectado do agente.
 
 ```ts copy
 import { OlosAgentWS } from "olosagentsdk";

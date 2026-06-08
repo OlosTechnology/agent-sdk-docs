@@ -503,7 +503,13 @@ agentWS.dispositionCall(dispositionId: any, forceCallId: any);
 
 ## consultingRequest
 
-Requests an assisted transfer to another campaign.
+Request an assisted transfer to another campaign or an external number.
+
+> **Note 1:** For campaign queries, the campaignId must be greater than 0 and the phoneNumber must be an empty string.
+
+> **Note 2:** To query an external number, the campaignId must be 0 and the phoneNumber should be composed of the area code (DDD) + phone number.
+
+In the case of a campaign query, a blind transfer will be performed, meaning the customer will be directly connected to the query and disconnected from the agent.
 
 ```ts copy
 import { OlosAgentWS } from "olosagentsdk";
