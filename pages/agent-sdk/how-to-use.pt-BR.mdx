@@ -80,6 +80,22 @@ Nesse parâmetro informamos se o SDK de inicializar com a função de logs ligad
 
 Assim que a inicialização for completa o SDK já podemos inicializar a escuta dos eventos para o agente. Vamos expecificar melhor todos os tipos de evento na próxima sessão.
 
+# Parando os eventos
+
+Após o logout da aplicação é necessário chamar o método _stop_ para parar a emissão dos eventos para o agente.
+
+Caso esteja utilizando o _OlosAgentWS_, chame o método _stop_ da instância:
+
+```js copy
+agentWS.stop();
+```
+
+Caso esteja utilizando também o _OlosAgentChannelWs_, chame o método _stop_ da instância dele também:
+
+```js copy
+agentChannel.stop();
+```
+
 ## Anywhere (WIP)
 
 Caso você esteja utilizando a versão da SDK que suporta o Olos Anywhere existem alguns parâmetros extras

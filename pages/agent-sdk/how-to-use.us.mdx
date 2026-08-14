@@ -79,3 +79,19 @@ In this parameter, we inform whether the SDK should initialize with the logging 
 # Events
 
 Once the initialization is complete, we can start listening to events for the agent with the SDK. We will specify all types of events more thoroughly in the next section.
+
+# Stopping the events
+
+After the application logs out, you must call the _stop_ method to stop the emission of events to the agent.
+
+If you are using _OlosAgentWS_, call the _stop_ method on its instance:
+
+```js copy
+agentWS.stop();
+```
+
+If you are also using _OlosAgentChannelWs_, call the _stop_ method on its instance as well:
+
+```js copy
+agentChannel.stop();
+```

@@ -814,3 +814,14 @@ import { OlosAgentWS } from "olosagentsdk";
 const agentWS = new OlosAgentWS();
 agentWS.agentDailySummary(agentId: string);
 ```
+
+## stop
+
+Detiene la emisión de los eventos para el Agente. Debe ser llamado después del logout de la aplicación.
+
+```ts copy
+import { OlosAgentWS } from "olosagentsdk";
+
+const agentWS = new OlosAgentWS();
+agentWS.stop();
+```
