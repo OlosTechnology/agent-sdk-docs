@@ -353,3 +353,14 @@ agentChannel.transferChat(
     privateTransfer: boolean
 );
 ```
+
+## stop
+
+Detiene la emisión de los eventos de las campañas de texto para el Agente. Debe ser llamado después del logout de la aplicación.
+
+```ts copy
+import { OlosAgentChannelWs } from "olosagentsdk";
+
+const agentChannel = new OlosAgentChannelWs();
+agentChannel.stop();
+```

@@ -80,3 +80,19 @@ En este parámetro informamos si el SDK se inicializa con la función logs activ
 
 Tan pronto como se complete la inicialización del SDK, ya podemos inicializar la escucha de los eventos para el agente. Vamos a especificar mejor todo los tipos de eventos en la próxima sesión.
 
+# Deteniendo los eventos
+
+Después del logout de la aplicación es necesario llamar al método _stop_ para detener la emisión de los eventos para el agente.
+
+En caso de estar utilizando el _OlosAgentWS_, llame al método _stop_ de la instancia:
+
+```js copy
+agentWS.stop();
+```
+
+En caso de estar utilizando también el _OlosAgentChannelWs_, llame al método _stop_ de la instancia de él también:
+
+```js copy
+agentChannel.stop();
+```
+
